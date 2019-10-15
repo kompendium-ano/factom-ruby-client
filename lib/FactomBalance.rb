@@ -1,36 +1,22 @@
 require 'uri'
 require 'net/http'
 require_relative 'config'
+require_relative '../lib/jsonrpc'
 
 class FactomBalance
 
   def initialize
     config = Config.new
     @host="#{config.getHost}:#{config.getPort}/v2"
+    @h = JsonRPC.new(@host)
   end
 
   def getFactoidAddressBalance(address)
-    url = URI("#{@host}")
-
-    http = Net::HTTP.new(url.host, url.port)
-
-    request = Net::HTTP::Get.new(url)
-    request.body = "{\"jsonrpc\": \"2.0\", \"id\": 0, \"method\": \"factoid-balance\", \"params\":{\"address\":\"#{address}\"}}"
-
-    response = http.request(request)
-    return response.read_body
+    return @h.call("factoid-balance", {"address": address} )
   end
 
   def getECAddressBalance(address)
-    url = URI("#{@host}")
-
-    http = Net::HTTP.new(url.host, url.port)
-
-    request = Net::HTTP::Get.new(url)
-    request.body = "{\"jsonrpc\": \"2.0\", \"id\": 0, \"method\": \"entry-credit-balance\", \"params\":{\"address\":\"#{address}\"}}"
-
-    response = http.request(request)
-    return response.read_body
+    return @h.call("entry-credit-balance", {"address": address} )
   end
 
 end

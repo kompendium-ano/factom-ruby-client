@@ -1,35 +1,21 @@
 require 'uri'
 require 'net/http'
 require_relative 'config'
+require_relative '../lib/jsonrpc'
 
 class FactomAddress
 
   def initialize
     config = Config.new
     @host="#{config.getHost}:#{config.getWalletdPort}/v2"
+    @h = JsonRPC.new(@host)
   end
 
   def generateEcAddress
-    url = URI("#{@host}")
-
-    http = Net::HTTP.new(url.host, url.port)
-
-    request = Net::HTTP::Get.new(url)
-    request.body = "{\"jsonrpc\": \"2.0\", \"id\": 0, \"method\": \"generate-ec-address\"}"
-
-    response = http.request(request)
-    return response.read_body
+    return @h.call("generate-ec-address", nil )
   end
 
   def generateFactoidAddress
-    url = URI(@host)
-
-    http = Net::HTTP.new(url.host, url.port)
-
-    request = Net::HTTP::Get.new(url)
-    request.body = "{\"jsonrpc\": \"2.0\", \"id\": 0, \"method\": \"generate-factoid-address\"}"
-
-    response = http.request(request)
-    return response.read_body
+    return @h.call("generate-factoid-address", nil )
   end
 end

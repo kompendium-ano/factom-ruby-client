@@ -2,6 +2,7 @@ require 'uri'
 require 'net/http'
 require_relative 'config'
 require "json"
+require_relative '../lib/jsonrpc'
 
 class CreateFactomChain
 
@@ -11,37 +12,26 @@ class CreateFactomChain
     @whost="#{config.getHost}:#{config.getWalletdPort}/v2"
   end
 
-  def commitChain(data)
-    url = URI("#{@host}")
+  def commitChain(params)
+    client = JsonRPC.new(@host)
+    return client.call("commit-chain", params)
+  end
 
-    http = Net::HTTP.new(url.host, url.port)
-
-    request = Net::HTTP::Get.new(url)
-    request.body = data
-
-    response = http.request(request)
-    return response.read_body
+  def revealChain(params)
+    client = JsonRPC.new(@host)
+    return client.call("reveal-chain", params)
   end
 
   def createFactomChain(ecpub, extids)
+    client = JsonRPC.new(@whost)
     extids = extids.unpack('b8B8')
-    postData = "{\n\"jsonrpc\":\"2.0\",\n\"id\":0,\n\"method\":\"compose-chain\",\n\"params\":{\n\"chain\":{\n\"firstentry\":{\n\"extids\":#{extids},\n\"content\":\"#{extids[1]}#{extids[0]}\"\n}\n},\n\"ecpub\":\"#{ecpub}\"\n}\n}"
-    # puts postData
-    url = URI("#{@whost}")
-
-    http = Net::HTTP.new(url.host, url.port)
-
-    request = Net::HTTP::Get.new(url)
-    request.body = postData
-
-    response = http.request(request)
-    resp = JSON.parse(response.read_body)
+    resp = client.call("compose-chain",{"chain":{"firstentry":{"extids":extids,"content":extids[1]+extids[0]}},"ecpub":ecpub})
 
     if (resp["error"])
       return resp["error"]
     else
-      commitData = self::commitChain(JSON.generate(resp["result"]["commit"]))
-      revealData = self::commitChain(JSON.generate(resp["result"]["reveal"]))
+      commitData = self::commitChain(resp["result"]["commit"]["params"])
+      revealData = self::revealChain(resp["result"]["reveal"]["params"])
 
       resData=[
           "jsonrpc"=> "2.0",
@@ -58,15 +48,8 @@ class CreateFactomChain
   end
 
   def makeFactomEntry(chainid, ecpub)
-    url = URI("#{@whost}")
-
-    http = Net::HTTP.new(url.host, url.port)
-
-    request = Net::HTTP::Get.new(url)
-    request.body = "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 0,\n    \"method\": \"compose-entry\",\n    \"params\": {\n        \"entry\": {\n            \"chainid\": \"#{chainid}\",\n            \"extids\": [\n                \"cd90\",\n                \"90cd\"\n            ],\n            \"content\": \"abcdef\"\n        },\n        \"ecpub\": \"#{ecpub}\"\n    }\n}"
-
-    response = http.request(request)
-    return response.read_body
+    client = JsonRPC.new(@whost)
+    return client.call("compose-entry",{"entry": {"chainid": "#{chainid}","extids": ["cd90","90cd"],"content": "abcdef"},"ecpub": "#{ecpub}"})
   end
 
 end

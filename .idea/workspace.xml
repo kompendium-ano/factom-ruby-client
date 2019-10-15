@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d42d4f6-4175-4126-9120-01437330c68d" name="Default Changelist" comment="" />
+    <list default="true" id="0d42d4f6-4175-4126-9120-01437330c68d" name="Default Changelist" comment="implemented json-rpc on all developed api's">
+      <change afterPath="$PROJECT_DIR$/doc.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Blocks.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Chains.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jsonrpc.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index" beforeDir="false" afterPath="$PROJECT_DIR$/index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/CreateFactomChain.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/CreateFactomChain.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/FactomAddress.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/FactomAddress.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/FactomBalance.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/FactomBalance.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ImportAddress.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ImportAddress.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ReadFactomChain.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ReadFactomChain.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Transaction.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Transaction.rb" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1RjKXpfcpVNDEFudUpY2EJkcy42" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="C:/wamp64/www/factom-api" />
@@ -91,14 +110,31 @@
       <workItem from="1570175119312" duration="5167000" />
       <workItem from="1570432604352" duration="13315000" />
       <workItem from="1570506115630" duration="20059000" />
+      <workItem from="1570690752258" duration="548000" />
+      <workItem from="1570691475705" duration="2997000" />
+      <workItem from="1571033357634" duration="6098000" />
+      <workItem from="1571119548208" duration="22015000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/FactomLib@All_tests_in_FactomLib__FactomLib.rcov" NAME="All tests in FactomLib: FactomLib Coverage Results" MODIFIED="1570175876738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="FactomLib" />
-    <SUITE FILE_PATH="coverage/FactomLib@index.rcov" NAME="index Coverage Results" MODIFIED="1570526470140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="FactomLib" />
+    <SUITE FILE_PATH="coverage/FactomLib@All_tests_in_FactomLib__FactomLib.rcov" NAME="All tests in FactomLib: FactomLib Coverage Results" MODIFIED="1570694717989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="FactomLib" />
+    <SUITE FILE_PATH="coverage/FactomLib@index.rcov" NAME="index Coverage Results" MODIFIED="1571149992377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="FactomLib" />
   </component>
 </project>

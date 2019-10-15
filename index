@@ -4,6 +4,8 @@ require_relative './lib/FactomBalance'
 require_relative './lib/CreateFactomChain'
 require_relative './lib/ReadFactomChain'
 require_relative './lib/Transaction'
+require_relative './lib/Blocks'
+require_relative './lib/Chains'
 
 # generate ec address
 address = FactomAddress.new
@@ -28,7 +30,7 @@ balance = FactomBalance.new
 
 # create a factom chain
 crChain = CreateFactomChain.new
-# rs = crChain.createFactomChain "EC2VKr9Vm5yuWtT9DMfnyPUDZkJH6oiNBipbtjA3YLWkenW9P1qm", "harishankar joshi"
+# rs = crChain.createFactomChain "EC3hAg6HGZ2cGeGeqkmLgF7mc5gPuyDFooqwy9GrMdvABiaxmu2y", "hghgjuytuy"
 # puts rs
 
 # Make a Factom Entry
@@ -37,8 +39,8 @@ crChain = CreateFactomChain.new
 
 # Read Factom Entry
 rdChain = ReadFactomChain.new
-# rs = rdChain.readChainEntry "b11bb4e1dacea726224c05bf863092ba02d301de55c08039f381e6e0ad1cef0d"
-# puts rs
+# readChain = rdChain.readChainEntry "b11bb4e1dacea726224c05bf863092ba02d301de55c08039f381e6e0ad1cef0d"
+# puts readChain
 
 # send transaction
 txn = Transaction.new
@@ -51,3 +53,29 @@ txn = Transaction.new
 # ]
 # rs = txn.sendTransaction data
 # puts rs
+
+blocks = Blocks.new
+# Get Block Height
+# blkHeight = blocks.ablockByHeight
+# puts blkHeight
+
+
+# Get Block Height
+# ack = blocks.ack "e96cca381bf25f6dd4dfdf9f7009ff84ee6edaa3f47f9ccf06d2787482438f4b", "f9164cd66af9d5773b4523a510b5eefb9a5e626480feeb6671ef2d17510ca300"
+# puts ack
+
+
+# Get admin-block
+# adminBlock = blocks.adminBlock "cc03cb3558b6b1acd24c5439fadee6523dd2811af82affb60f056df3374b39ae"
+# puts adminBlock
+
+
+chains = Chains.new
+# chainHead = chains.chainHead "5a77d1e9612d350b3734f6282259b7ff0a3f87d62cfef5f35e91a5604c0490a3"
+# puts chainHead
+#
+# commitChain = chains.commitChain("00016dcfd0983146e5259a21586d887816878126d2e1dd28d446a11d6ab7987f4dc78f2e4e5c17d763ad62244461094efc15bd4f1b2a899e01037416545862d9990806e17e5fe246310ceacb573703b7a8e7f59e11351a23ad48bc22062ff28246748e90231e980bfe58514d89325855ba189f585c259aaaa4b7a420b3c6704fe692cdd49cc4a962e1fe07569bb35841e98b2aae647aff2c163f67722d51024a28e7f05635d07b61f0093a50289281b4a22bb1dc65bfe4a7ecb74f7bff9c58c580c48943c86b9a0e")
+# puts commitChain
+#
+# commitEntry = chains.commitEntry("00016dcfd0983146e5259a21586d887816878126d2e1dd28d446a11d6ab7987f4dc78f2e4e5c17d763ad62244461094efc15bd4f1b2a899e01037416545862d9990806e17e5fe246310ceacb573703b7a8e7f59e11351a23ad48bc22062ff28246748e90231e980bfe58514d89325855ba189f585c259aaaa4b7a420b3c6704fe692cdd49cc4a962e1fe07569bb35841e98b2aae647aff2c163f67722d51024a28e7f05635d07b61f0093a50289281b4a22bb1dc65bfe4a7ecb74f7bff9c58c580c48943c86b9a0e")
+# puts commitEntry

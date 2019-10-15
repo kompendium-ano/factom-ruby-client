@@ -7,18 +7,11 @@ class ImportAddress
   def initialize
     config = Config.new
     @host="#{config.getHost}:#{config.getWalletdPort}/v2"
+    @h = JsonRPC.new(@host)
   end
 
   def importPrivateKey(privateKey)
-    url = URI("#{@host}")
-
-    http = Net::HTTP.new(url.host, url.port)
-
-    request = Net::HTTP::Get.new(url)
-    request.body = "{\"jsonrpc\": \"2.0\", \"id\": 0, \"method\": \"import-addresses\", \"params\":{\"addresses\":[{\"secret\":\"#{privateKey}\"}]}}"
-
-    response = http.request(request)
-    return response.read_body
+    return @h.call("import-addresses", {"addresses":[{"secret":privateKey}]} )
   end
 
 end
