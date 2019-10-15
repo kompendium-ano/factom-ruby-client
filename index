@@ -22,11 +22,9 @@ balance = FactomBalance.new
 # result = balance.getECAddressBalance "EC2dTBH2Nc9t9Y7RFD3FYMN5ottoPeHdk6xqUWEc6eHVoBPj6CmH"
 # puts result
 
-
 # get factoid address balance
 # result = balance.getFactoidAddressBalance "FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"
 # puts result
-
 
 # create a factom chain
 crChain = CreateFactomChain.new
@@ -58,7 +56,6 @@ blocks = Blocks.new
 # Get Block Height
 # blkHeight = blocks.ablockByHeight
 # puts blkHeight
-
 
 # Get Block Height
 # ack = blocks.ack "e96cca381bf25f6dd4dfdf9f7009ff84ee6edaa3f47f9ccf06d2787482438f4b", "f9164cd66af9d5773b4523a510b5eefb9a5e626480feeb6671ef2d17510ca300"
