@@ -1,7 +1,7 @@
 require 'uri'
 require 'net/http'
-require_relative 'config'
-require_relative '../lib/jsonrpc'
+require_relative '../config'
+require_relative '../jsonrpc'
 
 class Chains
 
@@ -21,5 +21,9 @@ class Chains
 
   def commitEntry(message)
     return @h.call("commit-entry",{"message": message})
+  end
+
+  def currentMinute()
+    return @h.call("current-minute",{})
   end
 end

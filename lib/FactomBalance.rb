@@ -19,4 +19,12 @@ class FactomBalance
     return @h.call("entry-credit-balance", {"address": address} )
   end
 
+  def multiFctBalance(addresses)
+    return @h.call("multiple-fct-balances", {"addresses": addresses} )
+  end
+
+  def multiEcBalance(addresses)
+    return @h.call("multiple-ec-balances", {"addresses": addresses} )
+  end
+
 end
