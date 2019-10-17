@@ -1,7 +1,7 @@
 require 'uri'
 require 'net/http'
-require_relative 'config'
-require_relative '../lib/jsonrpc'
+require_relative '../config'
+require_relative '../jsonrpc'
 
 class ReadFactomChain
 

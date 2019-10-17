@@ -30,4 +30,8 @@ class Entry
   def entryCreditRate()
     return @h.call("entry-credit-rate",{} )
   end
+
+  def pendingEntries()
+    return @h.call("pending-entries",{} )
+  end
 end

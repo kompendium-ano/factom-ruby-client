@@ -1,23 +1,13 @@
-require_relative './lib/FactomAddress'
-require_relative './lib/ImportAddress'
-require_relative './lib/FactomBalance'
-require_relative './lib/CreateFactomChain'
-require_relative './lib/ReadFactomChain'
-require_relative './lib/Transaction'
+require_relative './lib/Factomd/FactomBalance'
+require_relative './lib/Factomd/CreateFactomChain'
+require_relative './lib/Factomd/ReadFactomChain'
+require_relative './lib/Factomd/Transaction'
 require_relative './lib/Factomd/Blocks'
 require_relative './lib/Factomd/Chains'
 require_relative './lib/Factomd/Entry'
 require_relative './lib/Factomd/Factoid'
+require_relative './lib/Factomd/Others'
 
-# generate ec address
-address = FactomAddress.new
-# puts(address.generateEcAddress)
-# puts(address.generateFactoidAddress)
-
-# import private key
-import = ImportAddress.new
-# result = import.importPrivateKey "Es3tXbGBVKZDhUWzDKzQtg4rcpmmHPXAY9vxSM2JddwJSD5td3f8"
-# puts result
 
 balance = FactomBalance.new
 
@@ -63,6 +53,14 @@ txn = Transaction.new
 # rs = txn.sendTransaction data
 # puts rs
 
+# Get Transaction List
+# tx = txn.pendingTransactions "FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"
+# puts tx
+
+# Get Transaction
+# txtn = txn.transaction "64251aa63e011f803c883acf2342d784b405afa59e24d9c5506c84f6c91bf18b"
+# puts txtn
+
 blocks = Blocks.new
 # Get Block Height
 # blkHeight = blocks.ablockByHeight
@@ -74,7 +72,7 @@ blocks = Blocks.new
 
 
 # Get admin-block
-# adminBlock = blocks.adminBlock "cc03cb3558b6b1acd24c5439fadee6523dd2811af82affb60f056df3374b39ae"
+# adminBlock = blocks.adminBlock "ee4793393cc7cb7c93b9f609a850e13976be24a16f4b2ce81fb4177df72a865b"
 # puts adminBlock
 
 # Retrieves a directory block given only its height.
@@ -111,6 +109,13 @@ chains = Chains.new
 # currentMinute = chains.currentMinute
 # puts currentMinute
 
+# reveal-chain
+# revealChain = chains.revealChain "007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"
+# puts revealChain
+
+# To Check Commit Chain
+# sendRawMessage = chains.sendRawMessage "00016dcfa2434846e5259a21586d887816878126d2e1dd28d446a11d6ab7987f4dc78f2e4e5c17d763ad62244461094efc15bd4f1b2a899e01037416545862d9990806e17e5fe246310ceacb573703b7a8e7f59e11351a23ad48bc22062ff28246748e90231e980bfe58514d89325855ba189f585c259aaaa4b7a420b3c6704fe692cdd49cc4a9628f2383a36a95fe1ae2bc2314a5011605601ecf7858fbbbf8eb2388787d2cd680d8d90961f5760f94397733462e21cbaf1867ef85a68c671cc14e4bc4694cc102"
+# puts sendRawMessage
 
 entry = Entry.new
 
@@ -134,6 +139,10 @@ entry = Entry.new
 # rs = entry.entryCreditRate
 # puts rs
 
+# pending-entries
+# rs = entry.pendingEntries
+# puts rs
+
 factoid = Factoid.new
 
 # factoidAck
@@ -151,3 +160,18 @@ factoid = Factoid.new
 # fblockByHeight
 # heights = factoid.heights
 # puts heights
+
+oth = Others.new
+
+# properties
+# prop = oth.properties
+# puts prop
+
+# raw-data
+# rawData = oth.rawData "ee380f524689af957528c91e5674d0226744d19630fa45daec794f1d0c0c0222"
+# puts rawData
+
+# receipt
+# receipt = oth.receipt "2413a0f67e7dd988728f77020905829eef62ad06c0b7bf8e52a7e1455d5f3fb6"
+# puts receipt
+

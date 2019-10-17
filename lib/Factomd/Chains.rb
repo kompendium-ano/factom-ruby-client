@@ -26,4 +26,12 @@ class Chains
   def currentMinute()
     return @h.call("current-minute",{})
   end
+
+  def revealChain(entry)
+    return @h.call("reveal-chain",{"entry": entry})
+  end
+
+  def sendRawMessage(message)
+    return @h.call("send-raw-message",{"message": message})
+  end
 end
