@@ -1,6 +1,6 @@
 class Config
   def getHost
-    return "http://localhost"
+    return "https://dev.factomd.net"
   end
 
   def getPort
