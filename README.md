@@ -12,7 +12,8 @@
     puts result 
 # Example 
 
-    see documentation:
-        [Factomd](./Factomd.test.rb)
-        [Factom Walletd](./FactomWalletd.test.rb)
-        [Debug](./Debug.test.rb)
+[Factomd](Factomd.test.rb)
+
+[Factom Walletd](FactomWalletd.test.rb)
+
+[Debug](Debug.test.rb)
