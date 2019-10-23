@@ -3,6 +3,10 @@
 # Implementation
     clone this repo on your project root path
     git clone https://gitlab.com/kompendium/factom-ruby.git
+    
+# Config
+    You can change default node url on config file - lib/config.rb
+
 # Usage
     require_relative './factom-ruby/lib/Factomd/FactomBalance'
     balance = FactomBalance.new
