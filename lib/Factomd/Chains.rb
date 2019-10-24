@@ -31,6 +31,10 @@ class Chains
     return @h.call("reveal-chain",{"entry": entry})
   end
 
+  def revealEntry(entry)
+    return @h.call("reveal-entry",{"entry": entry})
+  end
+
   def sendRawMessage(message)
     return @h.call("send-raw-message",{"message": message})
   end

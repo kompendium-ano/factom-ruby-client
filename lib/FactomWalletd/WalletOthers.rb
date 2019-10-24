@@ -18,4 +18,12 @@ class WalletOthers
   def properties
     return @h.call("properties",{})
   end
+
+  def activeIdentityKeys(chainid, height)
+    return @h.call("active-identity-keys",{"chainid": chainid, "height": height})
+  end
+
+  def allIdentityKeys
+    return @h.call("all-identity-keys",{})
+  end
 end

@@ -22,4 +22,8 @@ class Wallet
   def errors(method)
     return @h.call(method,{})
   end
+
+  def unlockWallet(passphrase, timeout)
+    return @h.call("unlock-wallet",{"passphrase": passphrase, "timeout": timeout})
+  end
 end

@@ -8,6 +8,7 @@ class WalletTransaction
   def initialize
     config = Config.new
     @host="#{config.getHost}:#{config.getWalletdPort}/v2"
+    puts @host
     @h = JsonRPC.new(@host)
   end
 
@@ -69,5 +70,9 @@ class WalletTransaction
 
   def allTransactions
     return @h.call("transactions", {} )
+  end
+
+  def signData(signer, data)
+    return @h.call("sign-data", {"signer": signer, "data": data} )
   end
 end

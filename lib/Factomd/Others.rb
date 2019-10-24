@@ -8,6 +8,7 @@ class Others
   def initialize
     config = Config.new
     @host="#{config.getHost}:#{config.getPort}/v2"
+    puts @host
     @h = JsonRPC.new(@host)
   end
 
@@ -21,5 +22,13 @@ class Others
 
   def receipt(hash)
     return @h.call("receipt",{"hash": hash})
+  end
+
+  def anchors(hash)
+    return @h.call("anchors",{"hash": hash})
+  end
+
+  def diagnostics
+    return @h.call("diagnostics",{})
   end
 end
