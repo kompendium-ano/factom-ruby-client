@@ -8,7 +8,6 @@ class WalletTransaction
   def initialize
     config = Config.new
     @host="#{config.getHost}:#{config.getWalletdPort}/v2"
-    puts @host
     @h = JsonRPC.new(@host)
   end
 

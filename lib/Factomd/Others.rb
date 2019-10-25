@@ -8,7 +8,6 @@ class Others
   def initialize
     config = Config.new
     @host="#{config.getHost}:#{config.getPort}/v2"
-    puts @host
     @h = JsonRPC.new(@host)
   end
 

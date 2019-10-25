@@ -186,6 +186,6 @@ oth = Others.new
 # puts anchor
 
 # diagnostics
-diagnostics = oth.diagnostics
-puts diagnostics
+# diagnostics = oth.diagnostics
+# puts diagnostics
 
