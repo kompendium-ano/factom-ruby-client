@@ -1,12 +1,10 @@
 require 'uri'
 require 'net/http'
-require_relative '../config'
 require_relative '../jsonrpc'
 
 class Compose
 
-  def initialize
-    config = Config.new
+  def initialize(config)
     @host="#{config.getHost}:#{config.getWalletdPort}/v2"
     @h = JsonRPC.new(@host)
   end

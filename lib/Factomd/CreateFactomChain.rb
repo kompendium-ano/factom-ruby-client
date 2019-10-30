@@ -1,13 +1,11 @@
 require 'uri'
 require 'net/http'
-require_relative '../config'
 require "json"
 require_relative '../jsonrpc'
 
 class CreateFactomChain
 
-  def initialize
-    config = Config.new
+  def initialize(config)
     @host="#{config.getHost}:#{config.getPort}/v2"
     @whost="#{config.getHost}:#{config.getWalletdPort}/v2"
   end

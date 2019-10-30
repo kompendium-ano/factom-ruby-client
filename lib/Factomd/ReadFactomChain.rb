@@ -1,12 +1,10 @@
 require 'uri'
 require 'net/http'
-require_relative '../config'
 require_relative '../jsonrpc'
 
 class ReadFactomChain
 
-  def initialize
-    config = Config.new
+  def initialize(config)
     @host="#{config.getHost}:#{config.getPort}/v2"
     @client = JsonRPC.new(@host)
   end

@@ -1,14 +1,12 @@
 require 'uri'
 require 'net/http'
-require_relative '../config'
 require "json"
 require_relative '../jsonrpc'
 require_relative '../FactomWalletd/WalletTransactions'
 
 class Transaction
 
-  def initialize
-    config = Config.new
+  def initialize(config)
     @host="#{config.getHost}:#{config.getPort}/v2"
     @client = JsonRPC.new(@host)
   end
