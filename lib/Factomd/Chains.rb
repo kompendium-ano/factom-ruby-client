@@ -10,30 +10,37 @@ class Chains
   end
 
   def chainHead(chainid)
-    return @h.call("chain-head",{"chainid": chainid})
+    hash = @h.call("chain-head",{"chainid": chainid})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def commitChain(message)
-    return @h.call("commit-chain",{"message": message})
+    hash = @h.call("commit-chain",{"message": message})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def commitEntry(message)
-    return @h.call("commit-entry",{"message": message})
+    hash = @h.call("commit-entry",{"message": message})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def currentMinute()
-    return @h.call("current-minute",{})
+    hash = @h.call("current-minute",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def revealChain(entry)
-    return @h.call("reveal-chain",{"entry": entry})
+    hash = @h.call("reveal-chain",{"entry": entry})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def revealEntry(entry)
-    return @h.call("reveal-entry",{"entry": entry})
+    hash = @h.call("reveal-entry",{"entry": entry})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def sendRawMessage(message)
-    return @h.call("send-raw-message",{"message": message})
+    hash = @h.call("send-raw-message",{"message": message})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 end

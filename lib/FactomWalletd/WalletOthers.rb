@@ -10,18 +10,22 @@ class WalletOthers
   end
 
   def getHeight
-    return @h.call("get-height",{} )
+    hash = @h.call("get-height",{} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def properties
-    return @h.call("properties",{})
+    hash = @h.call("properties",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def activeIdentityKeys(chainid, height)
-    return @h.call("active-identity-keys",{"chainid": chainid, "height": height})
+    hash = @h.call("active-identity-keys",{"chainid": chainid, "height": height})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def allIdentityKeys
-    return @h.call("all-identity-keys",{})
+    hash = @h.call("all-identity-keys",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 end

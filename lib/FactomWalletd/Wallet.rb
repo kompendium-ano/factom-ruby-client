@@ -10,18 +10,22 @@ class Wallet
   end
 
   def walletBackup
-    return @h.call("wallet-backup",{} )
+    hash = @h.call("wallet-backup",{} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def walletBalances
-    return @h.call("wallet-balances",{})
+    hash = @h.call("wallet-balances",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def errors(method)
-    return @h.call(method,{})
+    hash = @h.call(method,{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def unlockWallet(passphrase, timeout)
-    return @h.call("unlock-wallet",{"passphrase": passphrase, "timeout": timeout})
+    hash = @h.call("unlock-wallet",{"passphrase": passphrase, "timeout": timeout})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 end

@@ -11,62 +11,77 @@ class Debug
   end
 
   def holdingQueue
-    return @h.call("holding-queue",{} )
+    hash = @h.call("holding-queue",{} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def networkInfo
-    return @h.call("network-info",{})
+    hash = @h.call("network-info",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def predictiveFer
-    return @h.call("predictive-fer",{})
+    hash = @h.call("predictive-fer",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def auditServers
-    return @h.call("audit-servers",{} )
+    hash = @h.call("audit-servers",{} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def federatedServers
-    return @h.call("federated-servers",{})
+    hash = @h.call("federated-servers",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def configuration
-    return @h.call("configuration",{})
+    hash = @h.call("configuration",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def processList
-    return @h.call("process-list",{} )
+    hash = @h.call("process-list",{} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def authorities
-    return @h.call("authorities",{})
+    hash = @h.call("authorities",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def reloadConfiguration
-    return @h.call("reload-configuration",{})
+    hash = @h.call("reload-configuration",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def dropRate
-    return @h.call("drop-rate",{} )
+    hash = @h.call("drop-rate",{} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def setDropRate(droprate)
-    return @h.call("set-drop-rate",{"DropRate":droprate})
+    hash = @h.call("set-drop-rate",{"DropRate":droprate})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def delay
-    return @h.call("delay",{})
+    hash = @h.call("delay",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def setDelay(delay)
-    return @h.call("set-delay",{"Delay":delay} )
+    hash = @h.call("set-delay",{"Delay":delay} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def summary
-    return @h.call("summary",{})
+    hash = @h.call("summary",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def messages
-    return @h.call("messages",{})
+    hash = @h.call("messages",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 end

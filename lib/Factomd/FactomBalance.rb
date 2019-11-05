@@ -10,19 +10,23 @@ class FactomBalance
   end
 
   def getFactoidAddressBalance(address)
-    return @h.call("factoid-balance", {"address": address} )
+    hash = @h.call("factoid-balance", {"address": address} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def getECAddressBalance(address)
-    return @h.call("entry-credit-balance", {"address": address} )
+    hash = @h.call("entry-credit-balance", {"address": address} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def multiFctBalance(addresses)
-    return @h.call("multiple-fct-balances", {"addresses": addresses} )
+    hash = @h.call("multiple-fct-balances", {"addresses": addresses} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def multiEcBalance(addresses)
-    return @h.call("multiple-ec-balances", {"addresses": addresses} )
+    hash = @h.call("multiple-ec-balances", {"addresses": addresses} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
 end

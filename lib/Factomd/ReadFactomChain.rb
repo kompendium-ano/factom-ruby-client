@@ -10,6 +10,7 @@ class ReadFactomChain
   end
 
   def readChainEntry(entryHash)
-    return @client.call("entry", {"hash": entryHash} )
+    hash = @client.call("entry", {"hash": entryHash} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 end

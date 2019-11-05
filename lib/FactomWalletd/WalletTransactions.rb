@@ -10,66 +10,82 @@ class WalletTransaction
   end
 
   def addEcOutput(txname, address, amount)
-    return @h.call("add-ec-output",{"tx-name": txname, "address": address, "amount": amount} )
+    hash = @h.call("add-ec-output",{"tx-name": txname, "address": address, "amount": amount} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def addFee(txname, address)
-    return @h.call("add-fee",{"tx-name": txname, "address": address})
+    hash = @h.call("add-fee",{"tx-name": txname, "address": address})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def newTransaction(txname)
-    return @h.call("new-transaction", {"tx-name": txname} )
+    hash = @h.call("new-transaction", {"tx-name": txname} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def addInput(txname, inputAddress, amount)
-    return @h.call("add-input", {"tx-name": txname, "address":inputAddress, "amount": amount} )
+    hash = @h.call("add-input", {"tx-name": txname, "address":inputAddress, "amount": amount} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def addOutput(txname, outputAddress, amount)
-    return @h.call("add-output", {"tx-name": txname, "address":outputAddress, "amount": amount} )
+    hash = @h.call("add-output", {"tx-name": txname, "address":outputAddress, "amount": amount} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def signTransaction(txname)
-    return @h.call("sign-transaction", {"tx-name": txname} )
+    hash = @h.call("sign-transaction", {"tx-name": txname} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def composeTransaction(txname)
-    return @h.call("compose-transaction", {"tx-name": txname} )
+    hash = @h.call("compose-transaction", {"tx-name": txname} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def deleteTransaction(txname)
-    return @h.call("delete-transaction", {"tx-name": txname} )
+    hash = @h.call("delete-transaction", {"tx-name": txname} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def subFee(txname, address)
-    return @h.call("sub-fee", {"tx-name": txname, "address": address} )
+    hash = @h.call("sub-fee", {"tx-name": txname, "address": address} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def signTransaction(txname)
-    return @h.call("sign-transaction", {"tx-name": txname} )
+    hash = @h.call("sign-transaction", {"tx-name": txname} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def tmpTransactions
-    return @h.call("tmp-transactions", {} )
+    hash = @h.call("tmp-transactions", {} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def transactionsByRange(startLimit, endLimit)
-    return @h.call("transactions", {"range":{"start":startLimit,"end":endLimit}} )
+    hash = @h.call("transactions", {"range":{"start":startLimit,"end":endLimit}} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def transactionsByTxid(txid)
-    return @h.call("transactions", {"range":{"txid":txid}} )
+    hash = @h.call("transactions", {"range":{"txid":txid}} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def transactionsByAddress(address)
-    return @h.call("transactions", {"range":{"address":address}} )
+    hash = @h.call("transactions", {"range":{"address":address}} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def allTransactions
-    return @h.call("transactions", {} )
+    hash = @h.call("transactions", {} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def signData(signer, data)
-    return @h.call("sign-data", {"signer": signer, "data": data} )
+    hash = @h.call("sign-data", {"signer": signer, "data": data} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 end
