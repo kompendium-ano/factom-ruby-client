@@ -1,5 +1,5 @@
-rvm:
-  - 2.3
-  - 2.4
-  - 2.5
-script: bundle exec rspec
+language: ruby
+sudo: false
+dist: trusty
+
+script: gem build factom
