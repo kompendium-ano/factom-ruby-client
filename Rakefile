@@ -2,6 +2,6 @@ require 'rake'
 
 desc 'run tests'
 
-task :apple do
+task :default do
   puts "Testing client functionality"
 end
