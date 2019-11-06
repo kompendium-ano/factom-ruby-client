@@ -4,7 +4,7 @@ desc 'run tests'
 
 task :default do
   puts "Building the Factom gem"
-  gem install factom
+  bundle gem factom
 end
 
 task :tests do
