@@ -68,6 +68,15 @@
     ]
     rs = txn.sendTransaction data
     puts rs
+
+# How to access response by key
+    debug = Debug.new(config)
+    
+    # holdingQueue
+    response = debug.holdingQueue
+    p response.result.Messages
+    
+    # You can access all api's responses as like this
     
 # Testing
     ruby tests/Factomd.test.rb

@@ -10,42 +10,52 @@ class WalletAddress
   end
 
   def address(address)
-    return @h.call("address",{"address": address} )
+    hash = @h.call("address",{"address": address} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def allAddresses
-    return @h.call("all-addresses",{})
+    hash = @h.call("all-addresses",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def generateEcAddress
-    return @h.call("generate-ec-address", {} )
+    hash = @h.call("generate-ec-address", {} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def generateFactoidAddress
-    return @h.call("generate-factoid-address", {} )
+    hash = @h.call("generate-factoid-address", {} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def importPrivateKey(privateKey)
-    return @h.call("import-addresses", {"addresses":[{"secret":privateKey}]} )
+    hash = @h.call("import-addresses", {"addresses":[{"secret":privateKey}]} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def importKoinify(words)
-    return @h.call("import-koinify", {"words":words} )
+    hash = @h.call("import-koinify", {"words":words} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def generateIdentityKey
-    return @h.call("generate-identity-key", {} )
+    hash = @h.call("generate-identity-key", {} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def importIdentityKeys(secret1, secret2)
-    return @h.call("import-identity-keys", {"keys":[{"secret":secret1},{"secret":secret2}]})
+    hash = @h.call("import-identity-keys", {"keys":[{"secret":secret1},{"secret":secret2}]})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def removeAddress(address)
-    return @h.call("remove-address", {"address": address})
+    hash = @h.call("remove-address", {"address": address})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def removeIdentityKey(public)
-    return @h.call("remove-identity-key", {"public": public})
+    hash = @h.call("remove-identity-key", {"public": public})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 end

@@ -10,7 +10,8 @@ config = Config.new
 debug = Debug.new(config)
 
 # holdingQueue
-puts(debug.holdingQueue)
+res = debug.holdingQueue
+p res.result.Messages
 
 # networkInfo
 # puts(debug.networkInfo)

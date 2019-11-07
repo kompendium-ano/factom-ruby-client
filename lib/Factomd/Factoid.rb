@@ -10,18 +10,22 @@ class Factoid
   end
 
   def factoidAck(txid)
-    return @h.call("factoid-ack",{"txid": txid} )
+    hash = @h.call("factoid-ack",{"txid": txid} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def factoidBlock(keymr)
-    return @h.call("factoid-block",{"keymr": keymr} )
+    hash = @h.call("factoid-block",{"keymr": keymr} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def fblockByHeight(height)
-    return @h.call("fblock-by-height",{"height": height} )
+    hash = @h.call("fblock-by-height",{"height": height} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def heights()
-    return @h.call("heights",{} )
+    hash = @h.call("heights",{} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 end

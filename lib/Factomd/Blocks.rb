@@ -10,30 +10,37 @@ class Blocks
   end
 
   def ablockByHeight
-    return @h.call("ablock-by-height",{"height":1} )
+    hash = @h.call("ablock-by-height",{"height":1} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def ack(hash, chainid)
-    return @h.call("ack",{"hash": hash, "chainid": chainid, "fulltransaction": ""})
+    hash = @h.call("ack",{"hash": hash, "chainid": chainid, "fulltransaction": ""})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def adminBlock(keymr)
-    return @h.call("admin-block",{"keymr": keymr})
+    hash = @h.call("admin-block",{"keymr": keymr})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def dblockByHeight(height)
-    return @h.call("dblock-by-height",{"height": height})
+    hash = @h.call("dblock-by-height",{"height": height})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def directoryBlock(keymr)
-    return @h.call("directory-block",{"keymr": keymr})
+    hash = @h.call("directory-block",{"keymr": keymr})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def directoryBlockHead()
-    return @h.call("directory-block-head",{})
+    hash = @h.call("directory-block-head",{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def ecblockByHeight(height)
-    return @h.call("ecblock-by-height",{"height": height})
+    hash = @h.call("ecblock-by-height",{"height": height})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 end

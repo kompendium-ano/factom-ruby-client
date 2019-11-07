@@ -12,12 +12,14 @@ class CreateFactomChain
 
   def commitChain(params)
     client = JsonRPC.new(@host)
-    return client.call("commit-chain", params)
+    hash = client.call("commit-chain", params)
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def revealChain(params)
     client = JsonRPC.new(@host)
-    return client.call("reveal-chain", params)
+    hash = client.call("reveal-chain", params)
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def createFactomChain(ecpub, extids)
@@ -26,7 +28,8 @@ class CreateFactomChain
     resp = client.call("compose-chain",{"chain":{"firstentry":{"extids":extids,"content":extids[1]+extids[0]}},"ecpub":ecpub})
 
     if (resp["error"])
-      return resp["error"]
+      hash = resp["error"]
+      JSON.parse(hash.to_json, object_class: OpenStruct)
     else
       commitData = self::commitChain(resp["result"]["commit"]["params"])
       revealData = self::revealChain(resp["result"]["reveal"]["params"])
@@ -41,13 +44,15 @@ class CreateFactomChain
           ]
       ]
 
-      return resData
+      hash = resData
+      JSON.parse(hash.to_json, object_class: OpenStruct)
     end
   end
 
   def makeFactomEntry(chainid, ecpub)
     client = JsonRPC.new(@whost)
-    return client.call("compose-entry",{"entry": {"chainid": "#{chainid}","extids": ["cd90","90cd"],"content": "abcdef"},"ecpub": "#{ecpub}"})
+    hash = client.call("compose-entry",{"entry": {"chainid": "#{chainid}","extids": ["cd90","90cd"],"content": "abcdef"},"ecpub": "#{ecpub}"})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
 end
