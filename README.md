@@ -1,8 +1,24 @@
-# factom-ruby
 
-# Implementation
-    clone this repo on your project root path
-    git clone https://gitlab.com/kompendium/factom-ruby.git
+----
+
+[![Build Status](https://travis-ci.com/kompendium-llc/factom-ruby-client.svg?branch=master)](https://travis-ci.com/kompendium-llc/factom-ruby)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/kompendium-llc/factom-ruby-client/blob/master/LICENSE)
+[![Discord](https://img.shields.io/discord/419201548372017163.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/mYmcQM2)
+
+# Factom-Ruby
+
+## Installation
+
+**Ruby Gem**:
+```bash
+gem install factom
+```
+
+**Git**:
+```bash
+git clone https://github.com/kompendium-llc/factom-ruby.git
+```
+
     
 # Config
     You can change default node url or ports
@@ -13,23 +29,29 @@
     config.setPort(8000)
     config.setWalletdPort(8009)
 
-# Usage
-# Retreiving a balance
+## Usage
+
+#### Retreiving a balance
+```ruby
     require_relative './factom-ruby/lib/Factomd/FactomBalance'
     balance = FactomBalance.new(config)
     
     # get ec address balance
     result = balance.getECAddressBalance "EC2dTBH2Nc9t9Y7RFD3FYMN5ottoPeHdk6xqUWEc6eHVoBPj6CmH"
     puts result 
-    
-# Reading Entry Data
+```
+
+#### Reading Entry Data
+```ruby
     require_relative './factom-ruby/lib/Factomd/ReadFactomChain'
     
     rdChain = ReadFactomChain.new(config)
     readChain = rdChain.readChainEntry "b11bb4e1dacea726224c05bf863092ba02d301de55c08039f381e6e0ad1cef0d"
     puts readChain
-    
-# Writing an Entry
+```
+
+####  Writing an Entry
+```ruby
     require_relative './factom-ruby/lib/FactomWalletd/Compose'
     require_relative './factom-ruby/lib/Factomd/Chains'
     
@@ -43,8 +65,10 @@
     
     revealChain = chains.revealEntry "007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"
     puts revealChain
-    
-# Block Height and Current Minute
+```
+
+#### Block Height and Current Minute
+```ruby
     require_relative './factom-ruby/lib/Factomd/Factoid'
     require_relative './factom-ruby/lib/Factomd/Chains'
     
@@ -55,8 +79,10 @@
     chains = Chains.new(config)
     currentMinute = chains.currentMinute
     puts currentMinute
-    
-# Sending A Transaction
+```
+
+#### Sending A Transaction
+```ruby
     require_relative './factom-ruby/lib/Factomd/Transaction'
     txn = Transaction.new(config)
     data = [
@@ -68,23 +94,27 @@
     ]
     rs = txn.sendTransaction data
     puts rs
+```
 
-# How to access response by key
+#### Accessing fields by key
+``` ruby
     debug = Debug.new(config)
     
-    # holdingQueue
+    # eg. holdingQueue
     response = debug.holdingQueue
     p response.result.Messages
-    
-    # You can access all api's responses as like this
-    
-# Testing
+```
+
+## Testing
+```ruby
     ruby tests/Factomd.test.rb
     ruby tests/FactomWalletd.test.rb
     ruby tests/Debug.test.rb
-    
-[Factomd](tests/Factomd.test.rb)
+```
+## Support
 
-[Factom Walletd](tests/FactomWalletd.test.rb)
+Additional support for the Factom Protocol or library usage can be found on [discord](https://discord.gg/mYmcQM2)
 
-[Debug](tests/Debug.test.rb)
+## Development
+
+To contribute to the factom-ruby library, clone the repository, create a feature branch and submit a PR.
