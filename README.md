@@ -21,6 +21,7 @@ git clone https://github.com/kompendium-llc/factom-ruby.git
 
     
 # Config
+```ruby
     You can change default node url or ports
     require_relative './factom-ruby/lib/config'
     config = Config.new
@@ -28,6 +29,7 @@ git clone https://github.com/kompendium-llc/factom-ruby.git
     config.setHost("http://abc.com")
     config.setPort(8000)
     config.setWalletdPort(8009)
+```
 
 ## Usage
 
