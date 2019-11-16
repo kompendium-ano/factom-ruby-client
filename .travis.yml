@@ -1,5 +1,11 @@
 language: ruby
-sudo: false
-dist: trusty
 
-script: gem build factom
+os: 
+  - linux
+  - osx
+  - windows
+
+script: 
+  - ruby tests/Factomd.test.rb
+  - ruby tests/FactomWalletd.test.rb
+  - ruby tests/Debug.test.rb
