@@ -2,8 +2,12 @@ language: ruby
 
 os: 
   - linux
-  - osx
-  - windows
+
+before_script:
+  - wget https://github.com/FactomProject/distribution/releases/download/v6.3.3/factom-amd64.deb
+  - sudo dpkg -i factom-amd64.deb
+  - factomd -blktime=120 -network=LOCAL
+  - factom-walletd
 
 script: 
   - ruby tests/Factomd.test.rb
