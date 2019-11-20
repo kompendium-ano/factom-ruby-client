@@ -12,7 +12,7 @@
 
 **Ruby Gem**:
 ```bash
-gem install factom
+gem install factom-rb
 ```
 
 **Git**:
