@@ -19,7 +19,7 @@ git clone https://github.com/kompendium-llc/factom-ruby.git
 ```
 
     
-# Config
+## Config
 ```ruby
     # Change default node url or ports
     require_relative './factom-ruby/lib/config'
