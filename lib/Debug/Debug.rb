@@ -1,6 +1,18 @@
 require 'uri'
 require 'net/http'
 require_relative '../jsonrpc'
+require_relative '../Response/Common'
+require_relative '../Response/Debug/HoldingQueue'
+require_relative '../Response/Debug/NetworkInfo'
+require_relative '../Response/Debug/PredictiveFER'
+require_relative '../Response/Debug/AuditServer'
+require_relative '../Response/Debug/FederatedServers'
+require_relative '../Response/Debug/Configuration'
+require_relative '../Response/Debug/Authorities'
+require_relative '../Response/Debug/DropRate'
+require_relative '../Response/Debug/Delay'
+require_relative '../Response/Debug/Summary'
+require_relative '../Response/Debug/Message'
 
 class Debug
 
@@ -12,32 +24,32 @@ class Debug
 
   def holdingQueue
     hash = @h.call("holding-queue",{} )
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    HoldingResponse.from_json!(hash)
   end
 
   def networkInfo
     hash = @h.call("network-info",{})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    NetworkInfoResponse.from_json!(hash)
   end
 
   def predictiveFer
     hash = @h.call("predictive-fer",{})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    PredictiveFERResponse.from_json!(hash)
   end
 
   def auditServers
     hash = @h.call("audit-servers",{} )
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    AuditServersResponse.from_json!(hash)
   end
 
   def federatedServers
     hash = @h.call("federated-servers",{})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    FederatedServersResponse.from_json!(hash)
   end
 
   def configuration
     hash = @h.call("configuration",{})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    ConfigurationResponse.from_json!(hash)
   end
 
   def processList
@@ -47,41 +59,41 @@ class Debug
 
   def authorities
     hash = @h.call("authorities",{})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    AuthoritiesResponse.from_json!(hash)
   end
 
   def reloadConfiguration
     hash = @h.call("reload-configuration",{})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    ConfigurationResponse.from_json!(hash)
   end
 
   def dropRate
     hash = @h.call("drop-rate",{} )
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    DropRateResponse.from_json!(hash)
   end
 
   def setDropRate(droprate)
     hash = @h.call("set-drop-rate",{"DropRate":droprate})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    DropRateResponse.from_json!(hash)
   end
 
   def delay
     hash = @h.call("delay",{})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    DelayResponse.from_json!(hash)
   end
 
   def setDelay(delay)
     hash = @h.call("set-delay",{"Delay":delay} )
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    DelayResponse.from_json!(hash)
   end
 
   def summary
     hash = @h.call("summary",{})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    SummaryResponse.from_json!(hash)
   end
 
   def messages
     hash = @h.call("messages",{})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    MessageResponse.from_json!(hash)
   end
 end

@@ -17,18 +17,18 @@ class JsonRPC
     http = Net::HTTP.new(url.host, url.port)
     request = Net::HTTP::Get.new(url)
     request.body = post_body
-    resp = http.request(request).body
-    resp = JSON.parse(resp)
-    if resp.has_key? 'error'
-      if resp['error']['message']=="Method not found"
-        resp['error']['message']="#{name} method not found. Please check your URL you provide is correct (factomd API call to factomd, wallet API call to factom-walletd API URL).";
-        return resp
-      else
-        return resp
-      end
-    else
-      return resp
-    end
+    return resp = http.request(request).body
+    # resp = JSON.parse(resp)
+    # if resp.has_key? 'error'
+    #   if resp['error']['message']=="Method not found"
+    #     resp['error']['message']="#{name} method not found. Please check your URL you provide is correct (factomd API call to factomd, wallet API call to factom-walletd API URL).";
+    #     return resp
+    #   else
+    #     return resp
+    #   end
+    # else
+    #   return resp
+    # end
   end
 
   class JSONRPCError < RuntimeError; end

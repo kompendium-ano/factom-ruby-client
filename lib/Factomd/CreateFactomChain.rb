@@ -2,6 +2,8 @@ require 'uri'
 require 'net/http'
 require "json"
 require_relative '../jsonrpc'
+require_relative '../Response/Common'
+require_relative '../Response/Factom/FactomChain'
 
 class CreateFactomChain
 
@@ -26,33 +28,33 @@ class CreateFactomChain
     client = JsonRPC.new(@whost)
     extids = extids.unpack('b8B8')
     resp = client.call("compose-chain",{"chain":{"firstentry":{"extids":extids,"content":extids[1]+extids[0]}},"ecpub":ecpub})
-
-    if (resp["error"])
-      hash = resp["error"]
-      JSON.parse(hash.to_json, object_class: OpenStruct)
-    else
-      commitData = self::commitChain(resp["result"]["commit"]["params"])
-      revealData = self::revealChain(resp["result"]["reveal"]["params"])
-
-      resData=[
-          "jsonrpc"=> "2.0",
-          "id"=> 0,
-          "result"=> [
-              "composeChain"=> resp,
-              "commitChain"=> commitData,
-              "revealChain"=> revealData
-          ]
-      ]
-
-      hash = resData
-      JSON.parse(hash.to_json, object_class: OpenStruct)
-    end
+    FactomChainResponse.from_json!(resp)
+    # if (resp["error"])
+    #   hash = resp["error"]
+    #   JSON.parse(hash.to_json, object_class: OpenStruct)
+    # else
+    #   commitData = self::commitChain(resp["result"]["commit"]["params"])
+    #   revealData = self::revealChain(resp["result"]["reveal"]["params"])
+    #
+    #   resData=[
+    #       "jsonrpc"=> "2.0",
+    #       "id"=> 0,
+    #       "result"=> [
+    #           "composeChain"=> resp,
+    #           "commitChain"=> commitData,
+    #           "revealChain"=> revealData
+    #       ]
+    #   ]
+    #
+    #   hash = resData
+    #   JSON.parse(hash.to_json, object_class: OpenStruct)
+    # end
   end
 
   def makeFactomEntry(chainid, ecpub)
     client = JsonRPC.new(@whost)
     hash = client.call("compose-entry",{"entry": {"chainid": "#{chainid}","extids": ["cd90","90cd"],"content": "abcdef"},"ecpub": "#{ecpub}"})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    FactomChainResponse.from_json!(hash)
   end
 
 end

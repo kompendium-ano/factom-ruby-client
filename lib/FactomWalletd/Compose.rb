@@ -1,6 +1,8 @@
 require 'uri'
 require 'net/http'
 require_relative '../jsonrpc'
+require_relative '../Response/Common'
+require_relative '../Response/Factom/FactomChain'
 
 class Compose
   def initialize(config)
@@ -11,17 +13,17 @@ class Compose
   def composeChain(ecpub, extids)
     extids = extids.unpack('b8B8')
     hash = @h.call("compose-chain",{"chain":{"firstentry":{"extids":extids,"content":extids[1]+extids[0]}},"ecpub":ecpub} )
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    FactomChainResponse.from_json!(hash)
   end
 
   def composeEntry(chainId, ecpub)
     hash = @h.call("compose-entry",{ "entry":  {"chainid":chainId,  "extids":["cd90", "90cd"], "content":"abcdef"}, "ecpub":ecpub})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    FactomChainResponse.from_json!(hash)
   end
 
   def composeTransaction(txname)
     hash = @h.call("compose-transaction", {"tx-name":txname} )
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    ComposeTransactionResponse.from_json!(hash)
   end
 
   def composeIdentityAttribute(receiverChainid, destinationChainid, attributes, signerkey, signerChainid, ecpub, force)
@@ -33,7 +35,7 @@ class Compose
         "signer-chainid": signerChainid,
         "ecpub": ecpub, "force": force
     })
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    FactomChainResponse.from_json!(hash)
   end
 
   def composeIdentityAttributeEndorsement(entryHash, destinationChainid, signerkey, signerChainid, ecpub, force)
@@ -44,7 +46,7 @@ class Compose
         "signer-chainid": signerChainid,
         "ecpub": ecpub, "force": force
     })
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    FactomChainResponse.from_json!(hash)
   end
 
   def composeIdentityChain(names, pubkeys, ecpub, force)
@@ -53,7 +55,7 @@ class Compose
         "pubkeys": pubkeys,
         "ecpub": ecpub, "force": force
     })
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    FactomChainResponse.from_json!(hash)
   end
 
   def composeIdentityKeyReplacement(chainid, oldkey, newkey, signerkey, ecpub, force)
@@ -64,6 +66,6 @@ class Compose
         "signerkey": signerkey,
         "ecpub": ecpub,"force": force
     })
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    FactomChainResponse.from_json!(hash)
   end
 end

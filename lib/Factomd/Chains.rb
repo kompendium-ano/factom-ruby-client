@@ -1,6 +1,10 @@
 require 'uri'
 require 'net/http'
 require_relative '../jsonrpc'
+require_relative '../Response/Common'
+require_relative '../Response/Chain/ChainHead'
+require_relative '../Response/Chain/CommitChain'
+require_relative '../Response/Chain/CurrentMinute'
 
 class Chains
 
@@ -11,32 +15,32 @@ class Chains
 
   def chainHead(chainid)
     hash = @h.call("chain-head",{"chainid": chainid})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    ChainHeadResponse.from_json!(hash)
   end
 
   def commitChain(message)
     hash = @h.call("commit-chain",{"message": message})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    CommitChainResponse.from_json!(hash)
   end
 
   def commitEntry(message)
     hash = @h.call("commit-entry",{"message": message})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    CommitChainResponse.from_json!(hash)
   end
 
   def currentMinute()
     hash = @h.call("current-minute",{})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    CurrentMinuteResponse.from_json!(hash)
   end
 
   def revealChain(entry)
     hash = @h.call("reveal-chain",{"entry": entry})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    CommitChainResponse.from_json!(hash)
   end
 
   def revealEntry(entry)
     hash = @h.call("reveal-entry",{"entry": entry})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    CommitChainResponse.from_json!(hash)
   end
 
   def sendRawMessage(message)
