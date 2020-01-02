@@ -14,43 +14,18 @@ debug = Debug.new(config)
 # puts res.Messages
 
 # networkInfo
-# puts(debug.networkInfo.NetworkNumber)
+
+puts(debug.networkInfo)
 
 # predictiveFer
-# puts(debug.predictiveFer.PredictiveFER)
+puts(debug.predictiveFer)
 
 # auditServers
-# puts(debug.auditServers.AuditServers)
+puts(debug.auditServers)
 
 # federatedServers
-# puts(debug.federatedServers.FederatedServers)
+puts(debug.federatedServers)
 
 # configuration
-# puts(debug.configuration.App)
+puts(debug.configuration)
 
-# processList
-# puts(debug.processList)
-
-# authorities
-# puts(debug.authorities.Authorities)
-
-# reloadConfiguration
-# puts(debug.reloadConfiguration.App)
-
-# dropRate
-# puts(debug.dropRate.DropRate)
-
-# setDropRate
-# puts(debug.setDropRate(10).DropRate)
-
-# delay
-# puts(debug.delay.Delay)
-
-# setDelay
-# puts(debug.setDelay(10).Delay)
-
-# summary
-# puts(debug.summary.Summary)
-
-# messages
-# puts(debug.messages.Messages)
