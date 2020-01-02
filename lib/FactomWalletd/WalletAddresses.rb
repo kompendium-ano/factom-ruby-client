@@ -1,6 +1,11 @@
 require 'uri'
 require 'net/http'
 require_relative '../jsonrpc'
+require_relative '../Response/Common'
+require_relative '../Response/Wallet/GenerateAddress'
+require_relative '../Response/Wallet/Addresses'
+require_relative '../Response/Wallet/ImportIdentityKey'
+require_relative '../Response/Wallet/RemoveAddress'
 
 class WalletAddress
 
@@ -10,42 +15,52 @@ class WalletAddress
   end
 
   def address(address)
-    return @h.call("address",{"address": address} )
+    hash = @h.call("address",{"address": address} )
+    GenerateAddressResponse.from_json!(hash)
   end
 
   def allAddresses
-    return @h.call("all-addresses",{})
+    hash = @h.call("all-addresses",{})
+    AddressResponse.from_json!(hash)
   end
 
   def generateEcAddress
-    return @h.call("generate-ec-address", {} )
+    hash = @h.call("generate-ec-address", {} )
+    GenerateAddressResponse.from_json!(hash)
   end
 
   def generateFactoidAddress
-    return @h.call("generate-factoid-address", {} )
+    hash = @h.call("generate-factoid-address", {} )
+    GenerateAddressResponse.from_json!(hash)
   end
 
   def importPrivateKey(privateKey)
-    return @h.call("import-addresses", {"addresses":[{"secret":privateKey}]} )
+    hash = @h.call("import-addresses", {"addresses":[{"secret":privateKey}]} )
+    AddressResponse.from_json!(hash)
   end
 
   def importKoinify(words)
-    return @h.call("import-koinify", {"words":words} )
+    hash = @h.call("import-koinify", {"words":words} )
+    GenerateAddressResponse.from_json!(hash)
   end
 
   def generateIdentityKey
-    return @h.call("generate-identity-key", {} )
+    hash = @h.call("generate-identity-key", {} )
+    GenerateAddressResponse.from_json!(hash)
   end
 
   def importIdentityKeys(secret1, secret2)
-    return @h.call("import-identity-keys", {"keys":[{"secret":secret1},{"secret":secret2}]})
+    hash = @h.call("import-identity-keys", {"keys":[{"secret":secret1},{"secret":secret2}]})
+    ImportIdentityKeyResponse.from_json!(hash)
   end
 
   def removeAddress(address)
-    return @h.call("remove-address", {"address": address})
+    hash = @h.call("remove-address", {"address": address})
+    RemoveAddressResponse.from_json!(hash)
   end
 
   def removeIdentityKey(public)
-    return @h.call("remove-identity-key", {"public": public})
+    hash = @h.call("remove-identity-key", {"public": public})
+    RemoveAddressResponse.from_json!(hash)
   end
 end

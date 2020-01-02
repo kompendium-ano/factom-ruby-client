@@ -1,6 +1,18 @@
 require 'uri'
 require 'net/http'
 require_relative '../jsonrpc'
+require_relative '../Response/Common'
+require_relative '../Response/Debug/HoldingQueue'
+require_relative '../Response/Debug/NetworkInfo'
+require_relative '../Response/Debug/PredictiveFER'
+require_relative '../Response/Debug/AuditServer'
+require_relative '../Response/Debug/FederatedServers'
+require_relative '../Response/Debug/Configuration'
+require_relative '../Response/Debug/Authorities'
+require_relative '../Response/Debug/DropRate'
+require_relative '../Response/Debug/Delay'
+require_relative '../Response/Debug/Summary'
+require_relative '../Response/Debug/Message'
 
 class Debug
 
@@ -11,62 +23,77 @@ class Debug
   end
 
   def holdingQueue
-    return @h.call("holding-queue",{} )
+    hash = @h.call("holding-queue",{} )
+    HoldingResponse.from_json!(hash)
   end
 
   def networkInfo
-    return @h.call("network-info",{})
+    hash = @h.call("network-info",{})
+    NetworkInfoResponse.from_json!(hash)
   end
 
   def predictiveFer
-    return @h.call("predictive-fer",{})
+    hash = @h.call("predictive-fer",{})
+    PredictiveFERResponse.from_json!(hash)
   end
 
   def auditServers
-    return @h.call("audit-servers",{} )
+    hash = @h.call("audit-servers",{} )
+    AuditServersResponse.from_json!(hash)
   end
 
   def federatedServers
-    return @h.call("federated-servers",{})
+    hash = @h.call("federated-servers",{})
+    FederatedServersResponse.from_json!(hash)
   end
 
   def configuration
-    return @h.call("configuration",{})
+    hash = @h.call("configuration",{})
+    ConfigurationResponse.from_json!(hash)
   end
 
   def processList
-    return @h.call("process-list",{} )
+    hash = @h.call("process-list",{} )
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def authorities
-    return @h.call("authorities",{})
+    hash = @h.call("authorities",{})
+    AuthoritiesResponse.from_json!(hash)
   end
 
   def reloadConfiguration
-    return @h.call("reload-configuration",{})
+    hash = @h.call("reload-configuration",{})
+    ConfigurationResponse.from_json!(hash)
   end
 
   def dropRate
-    return @h.call("drop-rate",{} )
+    hash = @h.call("drop-rate",{} )
+    DropRateResponse.from_json!(hash)
   end
 
   def setDropRate(droprate)
-    return @h.call("set-drop-rate",{"DropRate":droprate})
+    hash = @h.call("set-drop-rate",{"DropRate":droprate})
+    DropRateResponse.from_json!(hash)
   end
 
   def delay
-    return @h.call("delay",{})
+    hash = @h.call("delay",{})
+    DelayResponse.from_json!(hash)
   end
 
   def setDelay(delay)
-    return @h.call("set-delay",{"Delay":delay} )
+    hash = @h.call("set-delay",{"Delay":delay} )
+    DelayResponse.from_json!(hash)
   end
 
   def summary
-    return @h.call("summary",{})
+    hash = @h.call("summary",{})
+    SummaryResponse.from_json!(hash)
   end
 
   def messages
-    return @h.call("messages",{})
+    hash = @h.call("messages",{})
+    MessageResponse.from_json!(hash)
   end
 end

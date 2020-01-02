@@ -1,6 +1,10 @@
 require 'uri'
 require 'net/http'
 require_relative '../jsonrpc'
+require_relative '../Response/Common'
+require_relative '../Response/Factoid/FactoidAck'
+require_relative '../Response/Factoid/FactoidBlock'
+require_relative '../Response/Factoid/FactoidHeights'
 
 class Factoid
 
@@ -10,18 +14,22 @@ class Factoid
   end
 
   def factoidAck(txid)
-    return @h.call("factoid-ack",{"txid": txid} )
+    hash = @h.call("factoid-ack",{"txid": txid} )
+    FactoidAckResponse.from_json!(hash)
   end
 
   def factoidBlock(keymr)
-    return @h.call("factoid-block",{"keymr": keymr} )
+    hash = @h.call("factoid-block",{"keymr": keymr} )
+    FactoidBlockResponse.from_json!(hash)
   end
 
   def fblockByHeight(height)
-    return @h.call("fblock-by-height",{"height": height} )
+    hash = @h.call("fblock-by-height",{"height": height} )
+    FactoidBlockResponse.from_json!(hash)
   end
 
   def heights()
-    return @h.call("heights",{} )
+    hash = @h.call("heights",{} )
+    FactoidHeightsResponse.from_json!(hash)
   end
 end

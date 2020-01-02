@@ -1,6 +1,12 @@
 require 'uri'
 require 'net/http'
 require_relative '../jsonrpc'
+require_relative '../Response/Common'
+require_relative '../Response/Others/Properties'
+require_relative '../Response/Others/RawData'
+require_relative '../Response/Others/Receipt'
+require_relative '../Response/Others/Anchors'
+require_relative '../Response/Others/Diagnostics'
 
 class Others
 
@@ -10,22 +16,27 @@ class Others
   end
 
   def properties
-    return @h.call("properties",{} )
+    hash = @h.call("properties",{} )
+    PropertiesResponse.from_json!(hash)
   end
 
   def rawData(hash)
-    return @h.call("raw-data",{"hash": hash})
+    hash = @h.call("raw-data",{"hash": hash})
+    RawDataResponse.from_json!(hash)
   end
 
   def receipt(hash)
-    return @h.call("receipt",{"hash": hash})
+    hash = @h.call("receipt",{"hash": hash})
+    ReceiptResponse.from_json!(hash)
   end
 
   def anchors(hash)
-    return @h.call("anchors",{"hash": hash})
+    hash = @h.call("anchors",{"hash": hash})
+    AnchorResponse.from_json!(hash)
   end
 
   def diagnostics
-    return @h.call("diagnostics",{})
+    hash = @h.call("diagnostics",{})
+    DiagnosticsResponse.from_json!(hash)
   end
 end

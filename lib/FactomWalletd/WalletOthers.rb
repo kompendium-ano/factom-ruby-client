@@ -1,6 +1,11 @@
 require 'uri'
 require 'net/http'
 require_relative '../jsonrpc'
+require_relative '../Response/Common'
+require_relative '../Response/Others/GetHeight'
+require_relative '../Response/Others/WalletProperties'
+require_relative '../Response/Wallet/ActiveIdentityKeys'
+require_relative '../Response/Wallet/ImportIdentityKey'
 
 class WalletOthers
 
@@ -10,18 +15,22 @@ class WalletOthers
   end
 
   def getHeight
-    return @h.call("get-height",{} )
+    hash = @h.call("get-height",{} )
+    GetHeightResponse.from_json!(hash)
   end
 
   def properties
-    return @h.call("properties",{})
+    hash = @h.call("properties",{})
+    WalletPropertiesResponse.from_json!(hash)
   end
 
   def activeIdentityKeys(chainid, height)
-    return @h.call("active-identity-keys",{"chainid": chainid, "height": height})
+    hash = @h.call("active-identity-keys",{"chainid": chainid, "height": height})
+    ActiveIdentityKeysResponse.from_json!(hash)
   end
 
   def allIdentityKeys
-    return @h.call("all-identity-keys",{})
+    hash = @h.call("all-identity-keys",{})
+    ImportIdentityKeyResponse.from_json!(hash)
   end
 end

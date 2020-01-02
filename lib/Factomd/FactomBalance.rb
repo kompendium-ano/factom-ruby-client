@@ -1,6 +1,9 @@
 require 'uri'
 require 'net/http'
 require_relative '../jsonrpc'
+require_relative '../Response/Common'
+require_relative '../Response/Factom/Balance'
+require_relative '../Response/Factom/MultiBalance'
 
 class FactomBalance
 
@@ -10,19 +13,23 @@ class FactomBalance
   end
 
   def getFactoidAddressBalance(address)
-    return @h.call("factoid-balance", {"address": address} )
+    hash = @h.call("factoid-balance", {"address": address} )
+    BalanceResponse.from_json!(hash)
   end
 
   def getECAddressBalance(address)
-    return @h.call("entry-credit-balance", {"address": address} )
+    hash = @h.call("entry-credit-balance", {"address": address} )
+    BalanceResponse.from_json!(hash)
   end
 
   def multiFctBalance(addresses)
-    return @h.call("multiple-fct-balances", {"addresses": addresses} )
+    hash = @h.call("multiple-fct-balances", {"addresses": addresses} )
+    MultiBalanceResponse.from_json!(hash)
   end
 
   def multiEcBalance(addresses)
-    return @h.call("multiple-ec-balances", {"addresses": addresses} )
+    hash = @h.call("multiple-ec-balances", {"addresses": addresses} )
+    MultiBalanceResponse.from_json!(hash)
   end
 
 end

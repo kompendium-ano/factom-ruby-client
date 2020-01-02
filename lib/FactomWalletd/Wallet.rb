@@ -1,6 +1,10 @@
 require 'uri'
 require 'net/http'
 require_relative '../jsonrpc'
+require_relative '../Response/Common'
+require_relative '../Response/Wallet/WalletBackup'
+require_relative '../Response/Wallet/WalletBalances'
+require_relative '../Response/Wallet/UnlockWallet'
 
 class Wallet
 
@@ -10,18 +14,22 @@ class Wallet
   end
 
   def walletBackup
-    return @h.call("wallet-backup",{} )
+    hash = @h.call("wallet-backup",{} )
+    WalletBackupResponse.from_json!(hash)
   end
 
   def walletBalances
-    return @h.call("wallet-balances",{})
+    hash = @h.call("wallet-balances",{})
+    WalletBalanceResponse.from_json!(hash)
   end
 
   def errors(method)
-    return @h.call(method,{})
+    hash = @h.call(method,{})
+    JSON.parse(hash.to_json, object_class: OpenStruct)
   end
 
   def unlockWallet(passphrase, timeout)
-    return @h.call("unlock-wallet",{"passphrase": passphrase, "timeout": timeout})
+    hash = @h.call("unlock-wallet",{"passphrase": passphrase, "timeout": timeout})
+    UnlockWalletResponse.from_json!(hash)
   end
 end
