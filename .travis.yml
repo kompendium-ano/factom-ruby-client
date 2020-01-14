@@ -10,6 +10,8 @@ rvm:
   # - ruby-head
 
 before_script:
+ - sudo gem update --system
+ - gem install bundler
  - gem install dry-types
  - gem install dry-struct
 
