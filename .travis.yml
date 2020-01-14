@@ -10,11 +10,11 @@ rvm:
   # - ruby-head
 
 before_script:
- - sudo gem update --system
+ - gem update --system
  - gem install dry-types
  - gem install dry-struct
 
-# script:
-#   - ruby tests/Factomd.test.rb
-#   - ruby tests/FactomWalletd.test.rb
-#   - ruby tests/Debug.test.rb
+script:
+   - ruby tests/Factomd.test.rb
+   - ruby tests/FactomWalletd.test.rb
+   - ruby tests/Debug.test.rb
