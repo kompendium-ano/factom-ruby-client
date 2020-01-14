@@ -1,12 +1,6 @@
-require 'rake'
-
-desc 'run tests'
-
-task :default do
-  puts "Building the Factom gem"
-  bundle gem factom
-end
-
-task :tests do
-  puts "Testing client functionality"
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+  task :default => :spec
+rescue LoadError
 end
