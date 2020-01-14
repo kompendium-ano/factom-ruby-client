@@ -9,7 +9,7 @@ rvm:
   - jruby-head
   - ruby-head
 
-script:
-  - ruby tests/Factomd.test.rb
-  - ruby tests/FactomWalletd.test.rb
-  - ruby tests/Debug.test.rb
+# script:
+#   - ruby tests/Factomd.test.rb
+#   - ruby tests/FactomWalletd.test.rb
+#   - ruby tests/Debug.test.rb
