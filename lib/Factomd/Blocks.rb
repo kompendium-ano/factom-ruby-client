@@ -1,6 +1,13 @@
 require 'uri'
 require 'net/http'
 require_relative '../jsonrpc'
+require_relative '../Response/Common'
+require_relative '../Response/Block/ABlockByHeight'
+require_relative '../Response/Block/DBlockByHeight'
+require_relative '../Response/Entry/EntryAck'
+require_relative '../Response/Block/DirectoryBlock'
+require_relative '../Response/Block/DirectoryBlockHead'
+require_relative '../Response/Entry/EntryCreditBlock'
 
 class Blocks
 
@@ -11,36 +18,36 @@ class Blocks
 
   def ablockByHeight
     hash = @h.call("ablock-by-height",{"height":1} )
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    ABlockByHeightResponse.from_json!(hash)
   end
 
   def ack(hash, chainid)
     hash = @h.call("ack",{"hash": hash, "chainid": chainid, "fulltransaction": ""})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    EntryAckResponse.from_json!(hash)
   end
 
   def adminBlock(keymr)
     hash = @h.call("admin-block",{"keymr": keymr})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    ABlockByHeightResponse.from_json!(hash)
   end
 
   def dblockByHeight(height)
     hash = @h.call("dblock-by-height",{"height": height})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    DBlockByHeightResponse.from_json!(hash)
   end
 
   def directoryBlock(keymr)
     hash = @h.call("directory-block",{"keymr": keymr})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    DirectoryBlockResponse.from_json!(hash)
   end
 
   def directoryBlockHead()
     hash = @h.call("directory-block-head",{})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    DirectoryBlockHeadResponse.from_json!(hash)
   end
 
   def ecblockByHeight(height)
     hash = @h.call("ecblock-by-height",{"height": height})
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    EntryCreditBlockResponse.from_json!(hash)
   end
 end

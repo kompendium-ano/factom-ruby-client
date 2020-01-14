@@ -1,6 +1,8 @@
 require 'uri'
 require 'net/http'
 require_relative '../jsonrpc'
+require_relative '../Response/Common'
+require_relative '../Response/Entry/Entry'
 
 class ReadFactomChain
 
@@ -11,6 +13,6 @@ class ReadFactomChain
 
   def readChainEntry(entryHash)
     hash = @client.call("entry", {"hash": entryHash} )
-    JSON.parse(hash.to_json, object_class: OpenStruct)
+    EntryResponse.from_json!(hash)
   end
 end
