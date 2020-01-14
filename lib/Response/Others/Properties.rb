@@ -5,15 +5,15 @@ class PropertiesResponse < Dry::Struct
   def self.from_dynamic!(d)
     jsonData = d
     d = Types::Hash[d]
-    if(jsonData.has_key? 'result')
+    if (jsonData.has_key? "result")
       d = d.fetch("result")
     else
       d = d.fetch("error")
     end
     new(
-        factomdversion: d.has_key?('factomdversion') ? d.fetch("factomdversion") : nil,
-        factomdapiversion: d.has_key?('factomdapiversion') ? d.fetch("factomdapiversion") : nil,
-        )
+      factomdversion: d.has_key?("factomdversion") ? d.fetch("factomdversion") : nil,
+      factomdapiversion: d.has_key?("factomdapiversion") ? d.fetch("factomdapiversion") : nil,
+    )
   end
 
   def self.from_json!(json)
@@ -22,8 +22,8 @@ class PropertiesResponse < Dry::Struct
 
   def to_dynamic
     {
-        "factomdversion"  => @factomdversion,
-        "factomdapiversion"  => @factomdapiversion,
+      "factomdversion" => @factomdversion,
+      "factomdapiversion" => @factomdapiversion,
     }
   end
 

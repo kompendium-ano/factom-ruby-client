@@ -4,14 +4,14 @@ class GetHeightResponse < Dry::Struct
   def self.from_dynamic!(d)
     jsonData = d
     d = Types::Hash[d]
-    if(jsonData.has_key? 'result')
+    if (jsonData.has_key? "result")
       d = d.fetch("result")
     else
       d = d.fetch("error")
     end
     new(
-        height: d.has_key?('height') ? d.fetch("height") : 0,
-        )
+      height: d.has_key?("height") ? d.fetch("height") : 0,
+    )
   end
 
   def self.from_json!(json)
@@ -20,7 +20,7 @@ class GetHeightResponse < Dry::Struct
 
   def to_dynamic
     {
-        "height"  => @height,
+      "height" => @height,
     }
   end
 

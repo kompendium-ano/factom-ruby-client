@@ -4,14 +4,14 @@ class RawDataResponse < Dry::Struct
   def self.from_dynamic!(d)
     jsonData = d
     d = Types::Hash[d]
-    if(jsonData.has_key? 'result')
+    if (jsonData.has_key? "result")
       d = d.fetch("result")
     else
       d = d.fetch("error")
     end
     new(
-        data: d.has_key?('data') ? d.fetch("data") : nil,
-        )
+      data: d.has_key?("data") ? d.fetch("data") : nil,
+    )
   end
 
   def self.from_json!(json)
@@ -20,7 +20,7 @@ class RawDataResponse < Dry::Struct
 
   def to_dynamic
     {
-        "data"  => @data,
+      "data" => @data,
     }
   end
 

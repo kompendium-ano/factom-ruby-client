@@ -5,8 +5,8 @@ class Params < Dry::Struct
     jsonData = d
     d = Types::Hash[d]
     new(
-        transaction: d.has_key?('transaction') ? d.fetch("transaction") : nil,
-        )
+      transaction: d.has_key?("transaction") ? d.fetch("transaction") : nil,
+    )
   end
 
   def self.from_json!(json)
@@ -15,7 +15,7 @@ class Params < Dry::Struct
 
   def to_dynamic
     {
-        "transaction"  => @transaction,
+      "transaction" => @transaction,
     }
   end
 
@@ -31,16 +31,16 @@ class ComposeTransactionResponse < Dry::Struct
   def self.from_dynamic!(d)
     jsonData = d
     d = Types::Hash[d]
-    if(jsonData.has_key? 'result')
+    if (jsonData.has_key? "result")
       d = d.fetch("result")
     else
       d = d.fetch("error")
     end
 
     new(
-        id: d.has_key?('id') ? d.fetch("id") : 0,
-        params: d.has_key?('params') ? Params.from_json!(d.fetch("params")) : nil,
-        )
+      id: d.has_key?("id") ? d.fetch("id") : 0,
+      params: d.has_key?("params") ? Params.from_json!(d.fetch("params")) : nil,
+    )
   end
 
   def self.from_json!(json)
@@ -49,8 +49,8 @@ class ComposeTransactionResponse < Dry::Struct
 
   def to_dynamic
     {
-        "id"  => @id,
-        "params"  => @params.to_dynamic,
+      "id" => @id,
+      "params" => @params.to_dynamic,
     }
   end
 

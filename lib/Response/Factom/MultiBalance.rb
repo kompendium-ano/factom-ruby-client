@@ -6,15 +6,15 @@ class MultiBalanceResponse < Dry::Struct
   def self.from_dynamic!(d)
     jsonData = d
     d = Types::Hash[d]
-    if(jsonData.has_key? 'result')
+    if (jsonData.has_key? "result")
       d = d.fetch("result")
     else
       d = d.fetch("error")
     end
     new(
-        currentheight: d.has_key?('currentheight') ? d.fetch("currentheight") : 0,
-        lastsavedheight: d.has_key?('lastsavedheight') ? d.fetch("lastsavedheight") : 0,
-        balances: d.has_key?('balances') ? d.fetch("balances") : nil
+      currentheight: d.has_key?("currentheight") ? d.fetch("currentheight") : 0,
+      lastsavedheight: d.has_key?("lastsavedheight") ? d.fetch("lastsavedheight") : 0,
+      balances: d.has_key?("balances") ? d.fetch("balances") : nil,
     )
   end
 
@@ -24,9 +24,9 @@ class MultiBalanceResponse < Dry::Struct
 
   def to_dynamic
     {
-        "currentheight"  => @currentheight,
-        "lastsavedheight"  => @lastsavedheight,
-        "balances"  => @balances,
+      "currentheight" => @currentheight,
+      "lastsavedheight" => @lastsavedheight,
+      "balances" => @balances,
     }
   end
 

@@ -5,15 +5,15 @@ class RcEntry < Dry::Struct
   def self.from_dynamic!(d)
     jsonData = d
     d = Types::Hash[d]
-    if(jsonData.has_key? 'result')
+    if (jsonData.has_key? "result")
       d = d.fetch("result")
     else
       d = d.fetch("error")
     end
     new(
-        raw: d.has_key?('raw') ? d.fetch("raw") : nil,
-        entryhash: d.has_key?('entryhash') ? d.fetch("entryhash") : nil,
-        )
+      raw: d.has_key?("raw") ? d.fetch("raw") : nil,
+      entryhash: d.has_key?("entryhash") ? d.fetch("entryhash") : nil,
+    )
   end
 
   def self.from_json!(json)
@@ -22,8 +22,8 @@ class RcEntry < Dry::Struct
 
   def to_dynamic
     {
-        "raw"  => @raw,
-        "entryhash"  => @entryhash,
+      "raw" => @raw,
+      "entryhash" => @entryhash,
     }
   end
 
@@ -42,18 +42,18 @@ class Receipt < Dry::Struct
   def self.from_dynamic!(d)
     jsonData = d
     d = Types::Hash[d]
-    if(jsonData.has_key? 'result')
+    if (jsonData.has_key? "result")
       d = d.fetch("result")
     else
       d = d.fetch("error")
     end
     new(
-        entry: d.has_key?('entry') ? Entry.from_json!(d.fetch("entry")) : nil,
-        merklebranch: d.has_key?('merklebranch') ? d.fetch("merklebranch") : [],
-        entryblockkeymr: d.has_key?('entryblockkeymr') ? d.fetch("entryblockkeymr") : nil,
-        directoryblockkeymr: d.has_key?('directoryblockkeymr') ? d.fetch("directoryblockkeymr") : nil,
-        directoryblockheight: d.has_key?('directoryblockheight') ? d.fetch("directoryblockheight") : nil,
-        )
+      entry: d.has_key?("entry") ? Entry.from_json!(d.fetch("entry")) : nil,
+      merklebranch: d.has_key?("merklebranch") ? d.fetch("merklebranch") : [],
+      entryblockkeymr: d.has_key?("entryblockkeymr") ? d.fetch("entryblockkeymr") : nil,
+      directoryblockkeymr: d.has_key?("directoryblockkeymr") ? d.fetch("directoryblockkeymr") : nil,
+      directoryblockheight: d.has_key?("directoryblockheight") ? d.fetch("directoryblockheight") : nil,
+    )
   end
 
   def self.from_json!(json)
@@ -62,11 +62,11 @@ class Receipt < Dry::Struct
 
   def to_dynamic
     {
-        "entry"  => @entry.to_dynamic,
-        "merklebranch"  => @merklebranch,
-        "entryblockkeymr"  => @entryblockkeymr,
-        "directoryblockkeymr"  => @directoryblockkeymr,
-        "directoryblockheight"  => @directoryblockheight,
+      "entry" => @entry.to_dynamic,
+      "merklebranch" => @merklebranch,
+      "entryblockkeymr" => @entryblockkeymr,
+      "directoryblockkeymr" => @directoryblockkeymr,
+      "directoryblockheight" => @directoryblockheight,
     }
   end
 
@@ -81,14 +81,14 @@ class ReceiptResponse < Dry::Struct
   def self.from_dynamic!(d)
     jsonData = d
     d = Types::Hash[d]
-    if(jsonData.has_key? 'result')
+    if (jsonData.has_key? "result")
       d = d.fetch("result")
     else
       d = d.fetch("error")
     end
     new(
-        receipt: d.has_key?('receipt') ? Entry.from_json!(d.fetch("receipt")) : nil,
-        )
+      receipt: d.has_key?("receipt") ? Entry.from_json!(d.fetch("receipt")) : nil,
+    )
   end
 
   def self.from_json!(json)
@@ -97,7 +97,7 @@ class ReceiptResponse < Dry::Struct
 
   def to_dynamic
     {
-        "receipt"  => receipt.to_dynamic,
+      "receipt" => receipt.to_dynamic,
     }
   end
 

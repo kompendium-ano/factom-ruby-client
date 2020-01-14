@@ -5,15 +5,15 @@ class WalletPropertiesResponse < Dry::Struct
   def self.from_dynamic!(d)
     jsonData = d
     d = Types::Hash[d]
-    if(jsonData.has_key? 'result')
+    if (jsonData.has_key? "result")
       d = d.fetch("result")
     else
       d = d.fetch("error")
     end
     new(
-        walletversion: d.has_key?('walletversion') ? d.fetch("walletversion") : nil,
-        walletapiversion: d.has_key?('walletapiversion') ? d.fetch("walletapiversion") : nil,
-        )
+      walletversion: d.has_key?("walletversion") ? d.fetch("walletversion") : nil,
+      walletapiversion: d.has_key?("walletapiversion") ? d.fetch("walletapiversion") : nil,
+    )
   end
 
   def self.from_json!(json)
@@ -22,8 +22,8 @@ class WalletPropertiesResponse < Dry::Struct
 
   def to_dynamic
     {
-        "walletversion"  => @walletversion,
-        "walletapiversion"  => @walletapiversion,
+      "walletversion" => @walletversion,
+      "walletapiversion" => @walletapiversion,
     }
   end
 

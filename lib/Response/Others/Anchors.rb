@@ -12,22 +12,22 @@ class Ethereum < Dry::Struct
   def self.from_dynamic!(d)
     jsonData = d
     d = Types::Hash[d]
-    if(jsonData.has_key? 'result')
+    if (jsonData.has_key? "result")
       d = d.fetch("result")
     else
       d = d.fetch("error")
     end
     new(
-        recordheight: d.has_key?('recordheight') ? d.fetch("recordheight") : 0,
-        dbheightmax: d.has_key?('dbheightmax') ? d.fetch("dbheightmax") : 0,
-        dbheightmin: d.has_key?('dbheightmin') ? d.fetch("dbheightmin") : 0,
-        windowmr: d.has_key?('windowmr') ? d.fetch("windowmr") : nil,
-        merklebranch: d.has_key?('merklebranch') ? d.fetch("merklebranch") : nil,
-        contractaddress: d.has_key?('contractaddress') ? d.fetch("contractaddress") : nil,
-        txid: d.has_key?('txid') ? d.fetch("txid") : nil,
-        blockhash: d.has_key?('blockhash') ? d.fetch("blockhash") : nil,
-        txindex: d.has_key?('txindex') ? d.fetch("txindex") : 0,
-        )
+      recordheight: d.has_key?("recordheight") ? d.fetch("recordheight") : 0,
+      dbheightmax: d.has_key?("dbheightmax") ? d.fetch("dbheightmax") : 0,
+      dbheightmin: d.has_key?("dbheightmin") ? d.fetch("dbheightmin") : 0,
+      windowmr: d.has_key?("windowmr") ? d.fetch("windowmr") : nil,
+      merklebranch: d.has_key?("merklebranch") ? d.fetch("merklebranch") : nil,
+      contractaddress: d.has_key?("contractaddress") ? d.fetch("contractaddress") : nil,
+      txid: d.has_key?("txid") ? d.fetch("txid") : nil,
+      blockhash: d.has_key?("blockhash") ? d.fetch("blockhash") : nil,
+      txindex: d.has_key?("txindex") ? d.fetch("txindex") : 0,
+    )
   end
 
   def self.from_json!(json)
@@ -36,15 +36,15 @@ class Ethereum < Dry::Struct
 
   def to_dynamic
     {
-        "recordheight"  => @recordheight,
-        "dbheightmax"  => @dbheightmax,
-        "dbheightmin"  => @dbheightmin,
-        "windowmr"  => @windowmr,
-        "merklebranch"  => @merklebranch,
-        "contractaddress"  => @contractaddress,
-        "txid"  => @txid,
-        "blockhash"  => @blockhash,
-        "txindex"  => @txindex,
+      "recordheight" => @recordheight,
+      "dbheightmax" => @dbheightmax,
+      "dbheightmin" => @dbheightmin,
+      "windowmr" => @windowmr,
+      "merklebranch" => @merklebranch,
+      "contractaddress" => @contractaddress,
+      "txid" => @txid,
+      "blockhash" => @blockhash,
+      "txindex" => @txindex,
     }
   end
 
@@ -60,15 +60,15 @@ class Bitcoin < Dry::Struct
   def self.from_dynamic!(d)
     jsonData = d
     d = Types::Hash[d]
-    if(jsonData.has_key? 'result')
+    if (jsonData.has_key? "result")
       d = d.fetch("result")
     else
       d = d.fetch("error")
     end
     new(
-        transactionhash: d.has_key?('transactionhash') ? d.fetch("transactionhash") : nil,
-        blockhash: d.has_key?('blockhash') ? d.fetch("blockhash") : nil,
-        )
+      transactionhash: d.has_key?("transactionhash") ? d.fetch("transactionhash") : nil,
+      blockhash: d.has_key?("blockhash") ? d.fetch("blockhash") : nil,
+    )
   end
 
   def self.from_json!(json)
@@ -77,8 +77,8 @@ class Bitcoin < Dry::Struct
 
   def to_dynamic
     {
-        "transactionhash"  => @transactionhash,
-        "blockhash"  => @blockhash,
+      "transactionhash" => @transactionhash,
+      "blockhash" => @blockhash,
     }
   end
 
@@ -96,17 +96,17 @@ class AnchorResponse < Dry::Struct
   def self.from_dynamic!(d)
     jsonData = d
     d = Types::Hash[d]
-    if(jsonData.has_key? 'result')
+    if (jsonData.has_key? "result")
       d = d.fetch("result")
     else
       d = d.fetch("error")
     end
     new(
-        directoryblockheight: d.has_key?('directoryblockheight') ? d.fetch("directoryblockheight") : 0,
-        directoryblockkeymr: d.has_key?('directoryblockkeymr') ? d.fetch("directoryblockkeymr") : nil,
-        bitcoin: d.has_key?('bitcoin') ? Bitcoin.from_json!(d.fetch("bitcoin")) : nil,
-        ethereum: d.has_key?('ethereum') ? Ethereum.from_json!(d.fetch("ethereum")) : nil,
-        )
+      directoryblockheight: d.has_key?("directoryblockheight") ? d.fetch("directoryblockheight") : 0,
+      directoryblockkeymr: d.has_key?("directoryblockkeymr") ? d.fetch("directoryblockkeymr") : nil,
+      bitcoin: d.has_key?("bitcoin") ? Bitcoin.from_json!(d.fetch("bitcoin")) : nil,
+      ethereum: d.has_key?("ethereum") ? Ethereum.from_json!(d.fetch("ethereum")) : nil,
+    )
   end
 
   def self.from_json!(json)
@@ -115,10 +115,10 @@ class AnchorResponse < Dry::Struct
 
   def to_dynamic
     {
-        "directoryblockheight"  => @directoryblockheight,
-        "directoryblockkeymr"  => @directoryblockkeymr,
-        "bitcoin"  => @bitcoin.to_dynamic,
-        "ethereum"  => @ethereum.to_dynamic,
+      "directoryblockheight" => @directoryblockheight,
+      "directoryblockkeymr" => @directoryblockkeymr,
+      "bitcoin" => @bitcoin.to_dynamic,
+      "ethereum" => @ethereum.to_dynamic,
     }
   end
 

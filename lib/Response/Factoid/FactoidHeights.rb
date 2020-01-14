@@ -7,17 +7,17 @@ class FactoidHeightsResponse < Dry::Struct
   def self.from_dynamic!(d)
     jsonData = d
     d = Types::Hash[d]
-    if(jsonData.has_key? 'result')
+    if (jsonData.has_key? "result")
       d = d.fetch("result")
     else
       d = d.fetch("error")
     end
     new(
-        directoryblockheight: d.has_key?('directoryblockheight') ? d.fetch("directoryblockheight") : 0,
-        leaderheight: d.has_key?('leaderheight') ? d.fetch("leaderheight") : 0,
-        entryblockheight: d.has_key?('entryblockheight') ? d.fetch("entryblockheight") : 0,
-        entryheight: d.has_key?('entryheight') ? d.fetch("entryheight") : 0,
-        )
+      directoryblockheight: d.has_key?("directoryblockheight") ? d.fetch("directoryblockheight") : 0,
+      leaderheight: d.has_key?("leaderheight") ? d.fetch("leaderheight") : 0,
+      entryblockheight: d.has_key?("entryblockheight") ? d.fetch("entryblockheight") : 0,
+      entryheight: d.has_key?("entryheight") ? d.fetch("entryheight") : 0,
+    )
   end
 
   def self.from_json!(json)
@@ -26,10 +26,10 @@ class FactoidHeightsResponse < Dry::Struct
 
   def to_dynamic
     {
-        "directoryblockheight"  => @directoryblockheight,
-        "leaderheight"  => @leaderheight,
-        "entryblockheight"  => @entryblockheight,
-        "entryheight"  => @entryheight,
+      "directoryblockheight" => @directoryblockheight,
+      "leaderheight" => @leaderheight,
+      "entryblockheight" => @entryblockheight,
+      "entryheight" => @entryheight,
     }
   end
 
