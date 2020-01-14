@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/kompendium-llc/factom-ruby-client/blob/master/LICENSE)
 [![Gem](https://img.shields.io/gem/v/factom-rb.svg?style=flat)](http://rubygems.org/gems/factom-rb "View this project in Rubygems")
 
-# Factom-Ruby
+A JSON-RPC Ruby client for the Factom protocol. Each response has special ADT(algebraic data type) that automatically converted from JSON response and suitable for further usage in business logic. All responses are available in `Response` directory along with converters.
 
 ## Installation
 
@@ -120,3 +120,15 @@ Additional support for the Factom Protocol or library usage can be found on [dis
 ## Development
 
 To contribute to the factom-ruby library, clone the repository, create a feature branch and submit a PR.
+
+## Contributions
+
+Please, feel free to contribute, fork the repo and submit PR.
+
+
+Say thanks, send a tip:
+
+- `btc`: 39oVXpsgsyW8ZgzsnX3sV7HLdtXWfT96qN
+- `fct`: FA38cwer93mmPw1HxjScLmK1yF9iJTu5P87T2vdkbuLovm2YXyss
+- `eth`: 0x9cDBA6bb44772259B3A3fb89cf233A147a720f34
+- `xlm`: GD2FROTYXYSNOQQREYXHCXVOYWV556EM6PAHMVUHJNJEUYTUXUSNUZQ3
