@@ -18,4 +18,3 @@ script:
    - ruby tests/Factomd.test.rb
    - ruby tests/FactomWalletd.test.rb
 #   - ruby tests/Debug.test.rb
-   - bundle exec rake ci:tests
