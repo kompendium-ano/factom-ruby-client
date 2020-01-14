@@ -1,9 +1,9 @@
 language: ruby
 bundler_args: --without tool
 rvm:
-  - 1.9.3
+  # - 1.9.3
   # - jruby-19mode
-  # - 2.1.0
+  - 2.3.0
   # - ruby-head
   # - jruby-head
   # - jruby-head
@@ -11,7 +11,6 @@ rvm:
 
 before_script:
  - sudo gem update --system
- - gem install bundler
  - gem install dry-types
  - gem install dry-struct
 
