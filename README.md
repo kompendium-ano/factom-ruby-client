@@ -1,9 +1,9 @@
 # Ruby JSON-RPC client for Factom API
 
 [![Build Status](https://travis-ci.com/kompendium-llc/factom-ruby-client.svg?branch=master)](https://travis-ci.com/kompendium-llc/factom-ruby-client)
-[![Coverage Status](https://camo.githubusercontent.com/5643c7e1e36cf44aad4a72e350f9854afe856966/68747470733a2f2f636f766572616c6c732e696f2f7265706f732f65707269736c61632f67756172642d796172642f62616467652e7376673f6272616e63683d6d6173746572)](https://coveralls.io/github/kompendium-llc/factom-ruby-client?branch=master)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/kompendium-llc/factom-ruby-client/blob/master/LICENSE)
+[![Coverage Status](https://camo.githubusercontent.com/3a8120071b729d3bbcf5752155a2162073c5ed86/68747470733a2f2f636f766572616c6c732e696f2f7265706f732f596f6e6162612f6c75612d7472617669732d636f766572616c6c732f62616467652e706e673f6272616e63683d6d6173746572)](https://coveralls.io/github/kompendium-llc/factom-ruby-client?branch=master)
 [![Gem](https://img.shields.io/gem/v/factom-rb.svg?style=flat)](http://rubygems.org/gems/factom-rb "View this project in Rubygems")
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/kompendium-llc/factom-ruby-client/blob/master/LICENSE)
 
 A JSON-RPC Ruby client for the Factom protocol. Each response has special ADT(algebraic data type) that automatically converted from JSON response and suitable for further usage in business logic. All responses are available in `Response` directory along with converters.
 
@@ -19,19 +19,23 @@ gem install factom-rb
 git clone https://github.com/kompendium-llc/factom-ruby.git
 ```
 
-
 ## Config
+
+You can set multiple types of connections not only local but a remote one.
+
 ```ruby
     # Change default node url or ports
     require_relative './factom-ruby/lib/config'
     config = Config.new
 
-    config.setHost("http://abc.com")
+    config.setHost("https://factomd.net")
     config.setPort(8000)
     config.setWalletdPort(8009)
 ```
 
 ## Usage
+
+As a result of each response you'll get a unique structure that available for use in business logic right away.
 
 #### Retreiving a balance
 ```ruby
@@ -119,12 +123,11 @@ Additional support for the Factom Protocol or library usage can be found on [dis
 
 ## Development
 
-To contribute to the factom-ruby library, clone the repository, create a feature branch and submit a PR.
+To contribute to the `factom-ruby-client` library, clone the repository, create a feature branch and submit a PRfor review.
 
 ## Contributions
 
 Please, feel free to contribute, fork the repo and submit PR.
-
 
 Say thanks, send a tip:
 
