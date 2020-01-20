@@ -5,7 +5,7 @@
 [![Gem](https://img.shields.io/gem/v/factom-rb.svg?style=flat)](http://rubygems.org/gems/factom-rb "View this project in Rubygems")
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/kompendium-llc/factom-ruby-client/blob/master/LICENSE)
 
-A JSON-RPC Ruby client for the Factom protocol. Each response has special ADT(algebraic data type) that automatically converted from JSON response and suitable for further usage in business logic. All responses are available in `Response` directory along with converters.
+A JSON-RPC Ruby client for the Factom protocol. Each response has special ADT(algebraic data type) that automatically converted from JSON response and suitable for further usage in business logic. All responses are available in [Response](https://github.com/kompendium-llc/factom-ruby-client/tree/master/lib/Response) directory along with convinient converters.
 
 ## Installation
 
