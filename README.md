@@ -1,7 +1,7 @@
 # Ruby JSON-RPC client for Factom API
 
 [![Build Status](https://travis-ci.com/kompendium-llc/factom-ruby-client.svg?branch=master)](https://travis-ci.com/kompendium-llc/factom-ruby-client)
-[![Coverage Status](https://camo.githubusercontent.com/3a8120071b729d3bbcf5752155a2162073c5ed86/68747470733a2f2f636f766572616c6c732e696f2f7265706f732f596f6e6162612f6c75612d7472617669732d636f766572616c6c732f62616467652e706e673f6272616e63683d6d6173746572)](https://coveralls.io/github/kompendium-llc/factom-ruby-client?branch=master)
+[![Coverage Status](https://camo.githubusercontent.com/275ed9ffa38cbe3b7080582a63b11457161071ec/68747470733a2f2f636f766572616c6c732e696f2f7265706f732f6769746875622f6464696d617269612f6b6f612d747970657363726970742d737461727465722f62616467652e7376673f6272616e63683d646576656c6f70)](https://coveralls.io/github/kompendium-llc/factom-ruby-client?branch=master)
 [![Gem](https://img.shields.io/gem/v/factom-rb.svg?style=flat)](http://rubygems.org/gems/factom-rb "View this project in Rubygems")
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/kompendium-llc/factom-ruby-client/blob/master/LICENSE)
 
