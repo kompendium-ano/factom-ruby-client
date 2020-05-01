@@ -1,6 +1,7 @@
 # Ruby JSON-RPC client for Factom API
 
-
+[![Build Status](https://travis-ci.com/kompendium-llc/factom-ruby-client.svg?branch=master)](https://travis-ci.com/kompendium-llc/factom-ruby-client)
+[![Coverage Status](https://camo.githubusercontent.com/e952701cdf1177e284bbc22087860757252ebb6f/68747470733a2f2f636f766572616c6c732e696f2f7265706f732f7a656e646672616d65776f726b2f7a656e642d636f6e6669672f62616467652e7376673f6272616e63683d646576656c6f70)](https://coveralls.io/github/kompendium-llc/factom-ruby-client?branch=master)
 [![Gem](https://img.shields.io/gem/v/factom-rb.svg?style=flat)](http://rubygems.org/gems/factom-rb "View this project in Rubygems")
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/kompendium-llc/factom-ruby-client/blob/master/LICENSE)
 
