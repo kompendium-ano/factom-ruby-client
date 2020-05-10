@@ -7,6 +7,12 @@
 
 A JSON-RPC Ruby client for the Factom protocol. Each response has special ADT(algebraic data type) that automatically converted from JSON response and suitable for further usage in business logic. All responses are available in [Response](https://github.com/kompendium-llc/factom-ruby-client/tree/master/lib/Response) directory along with convinient converters.
 
+* [Installation](#installation)
+* [Config](#config)
+* [Usage](#usage)
+* [Development](#development)
+* [Contribute](#contribute)
+
 ## Installation
 
 **Ruby Gem**:
@@ -117,21 +123,19 @@ As a result of each response you'll get a unique structure that available for us
     ruby tests/FactomWalletd.test.rb
     ruby tests/Debug.test.rb
 ```
-## Support
+## Development
+Please, feel free to contribute, fork the repo and submit PR. To contribute to the `factom-ruby-client` library, clone the repository, create a feature branch and submit a PRfor review.
 
 Additional support for the Factom Protocol or library usage can be found on [discord](https://discord.gg/mYmcQM2)
 
-## Development
+## Learn
+- [Accessing the Factom blockchain from different programming languages](https://medium.com/kompendium-developments/accessing-factom-blockchain-from-different-programming-languages-7f09030efe16)
+- [Building simple blockchain game with Factom](https://medium.com/kompendium-developments/accessing-factom-blockchain-from-different-programming-languages-7f09030efe16)
 
-To contribute to the `factom-ruby-client` library, clone the repository, create a feature branch and submit a PRfor review.
+## Contribute
+That library developed by Kompendium, LLC for the good of Factom community. We strongly encourage you to support our efforts and ensure long maintenance by contributing a small dontation:
 
-## Contributions
-
-Please, feel free to contribute, fork the repo and submit PR.
-
-Say thanks, send a tip:
-
-- `btc`: 39oVXpsgsyW8ZgzsnX3sV7HLdtXWfT96qN
-- `fct`: FA38cwer93mmPw1HxjScLmK1yF9iJTu5P87T2vdkbuLovm2YXyss
-- `eth`: 0x9cDBA6bb44772259B3A3fb89cf233A147a720f34
-- `xlm`: GD2FROTYXYSNOQQREYXHCXVOYWV556EM6PAHMVUHJNJEUYTUXUSNUZQ3
+- `BTC`: 39oVXpsgsyW8ZgzsnX3sV7HLdtXWfT96qN
+- `FCT`: FA38cwer93mmPw1HxjScLmK1yF9iJTu5P87T2vdkbuLovm2YXyss
+- `ETH`: 0x9cDBA6bb44772259B3A3fb89cf233A147a720f34
+- `XLM`: GD2FROTYXYSNOQQREYXHCXVOYWV556EM6PAHMVUHJNJEUYTUXUSNUZQ3
